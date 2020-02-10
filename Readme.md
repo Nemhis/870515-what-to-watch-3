@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Курапов Павел](https://up.htmlacademy.ru/react/3/user/870515).
-* Наставник: `Неизвестно`.
+* Наставник: [Владислав Пономарев](https://htmlacademy.ru/profile/id1366303).
 
 ---
 
