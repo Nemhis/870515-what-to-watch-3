@@ -3,13 +3,9 @@ import ReactDom from 'react-dom';
 
 import App from './components/app/app';
 
-const film = {
-  name: `Best film`,
-  genre: `comedy`,
-  promoDate: new Date(),
-};
+import {films} from './data';
 
 ReactDom.render(
-    <App film={film}/>,
+    <App films={films}/>,
     document.getElementById(`root`)
 );
