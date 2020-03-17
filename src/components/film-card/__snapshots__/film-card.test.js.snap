@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render correctly <FilmCard> 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt="test name"
+      height="175"
+      src="/picture/src.jpg"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="#"
+      onClick={[Function]}
+    >
+      test name
+    </a>
+  </h3>
+</article>
+`;
