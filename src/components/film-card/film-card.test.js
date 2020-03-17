@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 
 import FilmCard from './film-card';
 
-
 const film = {
   name: `test name`,
   picture: `/picture/src.jpg`,
