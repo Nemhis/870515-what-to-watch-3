@@ -170,7 +170,7 @@ const FilmDetailInfo = ({film}) => {
 FilmDetailInfo.propTypes = {
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
   }).isRequired,
 };
 
