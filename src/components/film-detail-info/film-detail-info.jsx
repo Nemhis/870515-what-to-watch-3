@@ -26,7 +26,7 @@ const getTextEstimation = (rating) => {
   return textEstimation;
 };
 
-const FilmDetailInfo = ({film}) => {
+const FilmDetailInfo = ({film, onNameClick, onPosterClick}) => {
   const {
     backgroundImg,
     posterImg,
@@ -68,7 +68,7 @@ const FilmDetailInfo = ({film}) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title" onClick={onNameClick}>{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{released}</span>
@@ -97,7 +97,7 @@ const FilmDetailInfo = ({film}) => {
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
               <img src={posterImg} alt="The Grand Budapest Hotel poster" width="218"
-                height="327"/>
+                height="327" onClick={onPosterClick}/>
             </div>
 
             <div className="movie-card__desc">
@@ -198,6 +198,11 @@ const FilmDetailInfo = ({film}) => {
   );
 };
 
+FilmDetailInfo.defaultProps = {
+  onNameClick: () => {},
+  onPosterClick: () => {},
+};
+
 FilmDetailInfo.propTypes = {
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -211,6 +216,9 @@ FilmDetailInfo.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
+
+  onNameClick: PropTypes.func,
+  onPosterClick: PropTypes.func,
 };
 
 export default FilmDetailInfo;
