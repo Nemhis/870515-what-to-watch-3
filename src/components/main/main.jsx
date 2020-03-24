@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import FilmsList from '../films-list/films-list.jsx';
 
-const Main = ({films}) => {
+const Main = ({films, onFilmNameClick}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -97,7 +97,7 @@ const Main = ({films}) => {
             </li>
           </ul>
 
-          <FilmsList films={films} />
+          <FilmsList films={films} onFilmNameClick={onFilmNameClick} />
         </section>
       </div>
     </React.Fragment>
@@ -106,6 +106,7 @@ const Main = ({films}) => {
 
 Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object),
+  onFilmNameClick: PropTypes.func,
 };
 
 export default Main;

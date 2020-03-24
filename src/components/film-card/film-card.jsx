@@ -10,7 +10,7 @@ const FilmCard = ({film, onFilmClick, onMouseEnter}) => {
         <img src={previewImg} alt={name} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="#" onClick={onFilmClick}>{name}</a>
+        <a className="small-movie-card__link" href="#" onClick={() => onFilmClick(film)}>{name}</a>
       </h3>
     </article>
   );
