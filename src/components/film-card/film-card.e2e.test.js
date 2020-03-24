@@ -13,7 +13,7 @@ const film = {
   previewImg: `/picture/src.jpg`,
 };
 
-describe(`<Main> e2e tests`, () => {
+describe(`<FilmCard> e2e tests`, () => {
   it(`Film name link should be pressed`, () => {
     const onFilmClick = jest.fn();
     const main = shallow(
