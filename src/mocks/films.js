@@ -2,9 +2,9 @@ export default [
   {
     id: 1,
     name: `The Grand Budapest Hotel`,
-    poster: `img/the-grand-budapest-hotel-poster.jpg`,
-    preview: `img/the-grand-budapest-hotel.jpg`,
-    background: `img/the-grand-budapest-hotel-bg.jpg`,
+    posterImg: `img/the-grand-budapest-hotel-poster.jpg`,
+    previewImg: `img/the-grand-budapest-hotel.jpg`,
+    backgroundImg: `img/bg-the-grand-budapest-hotel.jpg`,
     backgroundColor: `#ffffff`,
     videoLink: `https://some-link`,
     previewVideoLink: `https://some-link`,
@@ -20,34 +20,34 @@ export default [
   },
   {
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
-    preview: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   },
   {
     name: `Bohemian Rhapsody`,
-    preview: `img/bohemian-rhapsody.jpg`,
+    previewImg: `img/bohemian-rhapsody.jpg`,
   },
   {
     name: `Macbeth`,
-    preview: `img/macbeth.jpg`,
+    previewImg: `img/macbeth.jpg`,
   },
   {
     name: `Aviator`,
-    preview: `img/aviator.jpg`,
+    previewImg: `img/aviator.jpg`,
   },
   {
     name: `We need to talk about Kevin`,
-    preview: `img/we-need-to-talk-about-kevin.jpg`,
+    previewImg: `img/we-need-to-talk-about-kevin.jpg`,
   },
   {
     name: `What We Do in the Shadows`,
-    preview: `img/what-we-do-in-the-shadows.jpg`,
+    previewImg: `img/what-we-do-in-the-shadows.jpg`,
   },
   {
     name: `Revenant`,
-    preview: `img/revenant.jpg`,
+    previewImg: `img/revenant.jpg`,
   },
   {
     name: `Johnny English`,
-    preview: `img/johnny-english.jpg`,
+    previewImg: `img/johnny-english.jpg`,
   },
 ];

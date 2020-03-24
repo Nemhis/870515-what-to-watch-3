@@ -1,14 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const getTextEstimation = (rating) => {
+  rating = rating >= 0 && rating <= 10 ? rating : -1;
+  let textEstimation = ``;
+
+  switch (true) {
+    case rating > 0 && rating < 3:
+      textEstimation = `Bad`;
+      break;
+    case rating < 5:
+      textEstimation = `Normal`;
+      break;
+    case rating < 8:
+      textEstimation = `Good`;
+      break;
+    case rating < 10:
+      textEstimation = `Very good`;
+      break;
+    case rating === 10:
+      textEstimation = `Awesome`;
+      break;
+  }
+
+  return textEstimation;
+};
+
 const FilmDetailInfo = ({film}) => {
+  const {
+    backgroundImg,
+    posterImg,
+    name,
+    genre,
+    released,
+    rating,
+    scoresCount,
+    description,
+    director,
+    starring
+  } = film;
 
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+            <img src={backgroundImg} alt="The Grand Budapest Hotel"/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -31,10 +68,10 @@ const FilmDetailInfo = ({film}) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -59,7 +96,7 @@ const FilmDetailInfo = ({film}) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+              <img src={posterImg} alt="The Grand Budapest Hotel poster" width="218"
                 height="327"/>
             </div>
 
@@ -79,25 +116,19 @@ const FilmDetailInfo = ({film}) => {
               </nav>
 
               <div className="movie-rating">
-                <div className="movie-rating__score">8,9</div>
+                <div className="movie-rating__score">{rating}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">240 ratings</span>
+                  <span className="movie-rating__level">{getTextEstimation(rating)}</span>
+                  <span className="movie-rating__count">{scoresCount} ratings</span>
                 </p>
               </div>
 
               <div className="movie-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
-                  Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`s friend and protege.</p>
+                <p>{description}</p>
 
-                <p>Gustave prides himself on providing first-class service to the hotel`s guests, including satisfying the
-                  sexual needs of the many elderly women who stay there. When one of Gustave`s lovers dies mysteriously,
-                  Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+                <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-                <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe
-                  and other</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {starring}</strong></p>
               </div>
             </div>
           </div>
@@ -170,7 +201,15 @@ const FilmDetailInfo = ({film}) => {
 FilmDetailInfo.propTypes = {
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
+    posterImg: PropTypes.string.isRequired,
+    backgroundImg: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    scoresCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
 
