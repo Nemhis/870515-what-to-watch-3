@@ -6,15 +6,15 @@ import Main from './main.jsx';
 const films = [
   {
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
-    picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   },
   {
     name: `Bohemian Rhapsody`,
-    picture: `img/bohemian-rhapsody.jpg`,
+    previewImg: `img/bohemian-rhapsody.jpg`,
   },
   {
     name: `Macbeth`,
-    picture: `img/macbeth.jpg`,
+    previewImg: `img/macbeth.jpg`,
   },
 ];
 

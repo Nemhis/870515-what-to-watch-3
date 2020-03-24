@@ -10,7 +10,7 @@ Enzyme.configure({
 
 const film = {
   name: `test name`,
-  picture: `/picture/src.jpg`,
+  previewImg: `/picture/src.jpg`,
 };
 
 describe(`<Main> e2e tests`, () => {

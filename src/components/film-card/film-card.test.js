@@ -5,7 +5,7 @@ import FilmCard from './film-card';
 
 const film = {
   name: `test name`,
-  picture: `/picture/src.jpg`,
+  previewImg: `/picture/src.jpg`,
 };
 
 it(`Render correctly <FilmCard>`, () => {
