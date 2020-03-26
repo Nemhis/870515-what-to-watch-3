@@ -9,13 +9,9 @@ exports[`Render correctly <FilmCard> 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <video
-      height="100%"
-      muted={true}
-      poster="/picture/src.jpg"
-      src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-      width="100%"
-    />
+    <div>
+      This is video player
+    </div>
   </div>
   <h3
     className="small-movie-card__title"

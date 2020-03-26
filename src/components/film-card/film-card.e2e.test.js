@@ -14,40 +14,51 @@ const film = {
   previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
+const renderVideoPlayer = () => <div>This is video player</div>;
+
 describe(`<FilmCard> e2e tests`, () => {
   it(`Film name link should be pressed`, () => {
     const onFilmClick = jest.fn();
-    const main = shallow(
+    const filmCard = shallow(
         <FilmCard
           film={film}
           onFilmClick={onFilmClick}
           onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+          renderVideoPlayer={renderVideoPlayer}
         />
     );
 
-    main
+    filmCard
       .find(`.small-movie-card__link`)
       .at(0)
       .simulate(`click`);
 
-    expect(1).toBe(1);
+    expect(onFilmClick.mock.calls.length).toBe(1);
   });
 
-  it(`OnMouseEnter callback should be triggered`, () => {
+  it(`OnMouseEnter and OnMouseLeave callback should be triggered`, () => {
     const onMouseEnter = jest.fn();
-    const main = shallow(
+    const onMouseLeave = jest.fn();
+
+    const filmCard = shallow(
         <FilmCard
           film={film}
           onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          renderVideoPlayer={renderVideoPlayer}
           onFilmClick={() => {}}
         />
     );
 
-    main
+    const cardWrapped = filmCard
       .find(`.small-movie-card`)
-      .at(0)
-      .simulate(`mouseEnter`);
+      .at(0);
 
-    expect(1).toBe(1);
+    cardWrapped.simulate(`mouseEnter`);
+    expect(onMouseEnter.mock.calls.length).toBe(1);
+
+    cardWrapped.simulate(`mouseLeave`);
+    expect(onMouseEnter.mock.calls.length).toBe(1);
   });
 });
