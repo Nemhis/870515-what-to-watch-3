@@ -1,21 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmCard from './film-card';
+import VideoPlayer from './video-player.jsx';
 
 const film = {
-  name: `test name`,
   previewImg: `/picture/src.jpg`,
   previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
-it(`Render correctly <FilmCard>`, () => {
+it(`Render correctly <VideoPlayer>`, () => {
   const tree = renderer
     .create(
-        <FilmCard
-          film={film}
-          onMouseEnter={() => {}}
-          onFilmClick={() => {}}
+        <VideoPlayer
+          isPlaying={false}
+          src={film.previewVideoLink}
+          poster={film.previewImg}
         />
     ).toJSON(`test`);
 
