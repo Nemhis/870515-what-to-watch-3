@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 
 import FilmCard from '../film-card/film-card.jsx';
 
-const FilmsList = ({films, onFilmNameClick, onFilmMouseEnter}) => {
+const FilmsList = ({films, onFilmNameClick}) => {
   return (
     <div className="catalog__movies-list">
       {films.map((film, index) => (
         <FilmCard
           key={index}
           film={film}
-          onMouseEnter={onFilmMouseEnter}
           onFilmClick={onFilmNameClick}
         />
       ))}
@@ -20,13 +19,11 @@ const FilmsList = ({films, onFilmNameClick, onFilmMouseEnter}) => {
 
 FilmsList.defaultProps = {
   onFilmNameClick() {},
-  onFilmMouseEnter() {},
 };
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object),
   onFilmNameClick: PropTypes.func,
-  onFilmMouseEnter: PropTypes.func,
 };
 
 export default FilmsList;
