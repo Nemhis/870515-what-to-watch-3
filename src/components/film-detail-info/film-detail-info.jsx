@@ -149,6 +149,7 @@ class FilmDetailInfo extends PureComponent {
 FilmDetailInfo.defaultProps = {
   onNameClick: () => {},
   onPosterClick: () => {},
+  onFilmNameClick: () => {},
   similarFilms: [],
 };
 
@@ -162,7 +163,7 @@ FilmDetailInfo.propTypes = {
   }).isRequired,
   similarFilms: PropTypes.arrayOf(PropTypes.object),
 
-  onFilmNameClick: PropTypes.func.isRequired,
+  onFilmNameClick: PropTypes.func,
   onNameClick: PropTypes.func,
   onPosterClick: PropTypes.func,
 };
