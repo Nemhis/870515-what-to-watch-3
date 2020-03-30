@@ -18,3 +18,7 @@ export const formatMinutes = (totalMinutes) => {
 
   return formatParts.join(` `);
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
