@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
@@ -75,4 +76,9 @@ App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
