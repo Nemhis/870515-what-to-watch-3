@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FilmCard from '../film-card/film-card.jsx';
-import withVideoPreview from '../../hocs/with-video-preview';
+import withVideoPreview from '../../hocs/with-video-preview/with-video-preview.jsx';
 
 const FilmCardWrapped = withVideoPreview(FilmCard);
 
