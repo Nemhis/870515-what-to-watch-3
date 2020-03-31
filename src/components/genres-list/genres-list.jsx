@@ -1,25 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const DEFAULT_ITEM = `All genres`;
+
 const GenresList = ({genres, onSelectGenre, selectedGenre}) => {
+  genres.unshift(DEFAULT_ITEM);
+
   return (
     <ul className="catalog__genres-list">
-      <li className={`catalog__genres-item ${selectedGenre === null ? `catalog__genres-item--active` : ``}`}>
-        <a href="#" className="catalog__genres-link" onClick={() => onSelectGenre(null)}>All genres</a>
-      </li>
-
-      ${genres.map((genre, index) => (
+      {genres.map((genre, index) => (
         <li key={index}
           className={`catalog__genres-item ${genre === selectedGenre ? `catalog__genres-item--active` : ``}`}>
 
-          <a href="#" className="catalog__genres-link" onClick={() => onSelectGenre(genre)}>{genre}</a>
+          <a href="#" className="catalog__genres-link" onClick={() => {
+            if (genre === DEFAULT_ITEM) {
+              onSelectGenre(null);
+            } else {
+              onSelectGenre(genre);
+            }
+          }}>
+            {genre}
+          </a>
         </li>
       ))}
     </ul>);
 };
 
 GenresList.defaultProps = {
-  selectedGenre: null,
+  selectedGenre: DEFAULT_ITEM,
 };
 
 GenresList.propTypes = {
