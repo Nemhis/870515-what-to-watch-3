@@ -38,7 +38,14 @@ const withVideoPreview = (Component) => {
     }
 
     _renderVideoPlayer({previewImg, previewVideoLink}) {
-      return <VideoPlayer src={previewVideoLink} poster={previewImg} isPlaying={this.state.isPlaying} />;
+      return <VideoPlayer
+        src={previewVideoLink}
+        poster={previewImg}
+        isPlaying={this.state.isPlaying}
+        width={`100%`}
+        height={`100%`}
+        muted={true}
+      />;
     }
 
     render() {

@@ -23,6 +23,8 @@ describe(`<VideoPlayer> e2e tests`, () => {
           src={film.previewVideoLink}
           poster={film.previewImg}
           isPlaying={false}
+          width={`100`}
+          height={`100`}
         />
     );
 

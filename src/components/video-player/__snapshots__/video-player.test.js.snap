@@ -2,10 +2,10 @@
 
 exports[`Render correctly <VideoPlayer> 1`] = `
 <video
-  height="100%"
-  muted={true}
+  height="100"
+  muted={false}
   poster="/picture/src.jpg"
   src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-  width="100%"
+  width="100"
 />
 `;

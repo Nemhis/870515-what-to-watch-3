@@ -15,6 +15,8 @@ it(`Render correctly <VideoPlayer>`, () => {
           isPlaying={false}
           src={film.previewVideoLink}
           poster={film.previewImg}
+          width={`100`}
+          height={`100`}
         />
     ).toJSON(`test`);
 
