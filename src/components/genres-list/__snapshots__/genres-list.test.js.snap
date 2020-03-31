@@ -12,17 +12,6 @@ exports[`Render correctly <GenresList> Default active item 1`] = `
       href="#"
       onClick={[Function]}
     >
-      All genres
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
       genre 1
     </a>
   </li>
@@ -44,28 +33,6 @@ exports[`Render correctly <GenresList> Genre active items 1`] = `
 <ul
   className="catalog__genres-list"
 >
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
-      All genres
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
-      All genres
-    </a>
-  </li>
   <li
     className="catalog__genres-item "
   >

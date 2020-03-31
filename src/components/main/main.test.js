@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Main from './main.jsx';
+import {Main} from './main.jsx';
 
 const films = [
   {
@@ -20,10 +20,11 @@ const films = [
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];
+const genres = [`Genre 1`, `Genre 2`];
 
 it(`Render correctly <Main>`, () => {
   const tree = renderer
-    .create(<Main films={films}/>)
+    .create(<Main films={films} genres={genres} onSelectGenre={() => {}} />)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

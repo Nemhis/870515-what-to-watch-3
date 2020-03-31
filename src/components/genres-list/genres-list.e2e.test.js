@@ -24,8 +24,10 @@ it(`<GenresList> pass correct value on select genre`, () => {
 
   genreListWrapper
     .find(`.catalog__genres-link`)
-    .at(1)
-    .simulate(`click`);
+    .at(0)
+    .simulate(`click`, {
+      preventDefault() {},
+    });
 
   expect(onGenreSelect.mock.calls[0][0]).toBe(`genre 1`);
 });
