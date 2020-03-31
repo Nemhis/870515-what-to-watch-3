@@ -22,3 +22,7 @@ export const formatMinutes = (totalMinutes) => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const arrayUnique = (array) => {
+  return array.filter((value, index, arr) => arr.indexOf(value) === index);
+};

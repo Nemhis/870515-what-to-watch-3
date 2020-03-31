@@ -1,8 +1,13 @@
 import films from './mocks/films';
+import {arrayUnique} from './utils';
+
+const MAX_GENRES_COUNT = 9;
+const DEFAULT_GENRE_ITEM = `All genres`;
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
   UPDATE_FILMS: `UPDATE_FILMS`,
+  UPDATE_GENRES_LIST: `UPDATE_GENRES_LIST`,
 };
 
 const ActionCreator = {
@@ -14,17 +19,29 @@ const ActionCreator = {
   },
 
   updateFilms(genre) {
-    const filteredFilms = films;
+    let filteredFilms = films;
 
-    if (genre) {
-      filteredFilms.filter((film) => film.genre === genre);
+    if (genre !== DEFAULT_GENRE_ITEM) {
+      filteredFilms = filteredFilms.filter((film) => film.genre === genre);
     }
 
     return ({
       type: ActionType.UPDATE_FILMS,
       payload: filteredFilms,
     });
-  }
+  },
+
+  updateGenresList(filmsForGenreList) {
+    let genres = filmsForGenreList.map((film) => film.genre);
+    genres = arrayUnique(genres);
+    genres = genres.slice(0, MAX_GENRES_COUNT);
+    genres.unshift(DEFAULT_GENRE_ITEM);
+
+    return ({
+      type: ActionType.UPDATE_GENRES_LIST,
+      payload: genres,
+    });
+  },
 };
 
-export {ActionType, ActionCreator};
+export {ActionType, ActionCreator, DEFAULT_GENRE_ITEM};

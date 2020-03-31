@@ -32,32 +32,62 @@ export default [
   },
   {
     name: `Macbeth`,
+    genre: `Crime`,
     previewImg: `img/macbeth.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     name: `Aviator`,
+    genre: `Documentary`,
     previewImg: `img/aviator.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     name: `We need to talk about Kevin`,
+    genre: `Horror`,
     previewImg: `img/we-need-to-talk-about-kevin.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     name: `What We Do in the Shadows`,
+    genre: `Romance`,
     previewImg: `img/what-we-do-in-the-shadows.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     name: `Revenant`,
+    genre: `Sci-Fi`,
     previewImg: `img/revenant.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     name: `Johnny English`,
+    genre: `Thrillers`,
     previewImg: `img/johnny-english.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
+  {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    genre: `Kids & Family`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+  {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    genre: `Documentary`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+  {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    genre: `Test genre 1`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+  {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    genre: `Test genre 2`,
+    previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  }
 ];
