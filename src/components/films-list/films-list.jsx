@@ -6,19 +6,17 @@ import withVideoPreview from '../../hocs/with-video-preview/with-video-preview.j
 
 const FilmCardWrapped = withVideoPreview(FilmCard);
 
-const FilmsList = ({films, onFilmNameClick}) => {
-  return (
-    <div className="catalog__movies-list">
-      {films.map((film, index) => (
-        <FilmCardWrapped
-          key={index}
-          film={film}
-          onFilmClick={onFilmNameClick}
-        />
-      ))}
-    </div>
-  );
-};
+const FilmsList = ({films, onFilmNameClick}) => (
+  <div className="catalog__movies-list">
+    {films.map((film, index) => (
+      <FilmCardWrapped
+        key={index}
+        film={film}
+        onFilmClick={onFilmNameClick}
+      />
+    ))}
+  </div>
+);
 
 FilmsList.defaultProps = {
   onFilmNameClick() {},

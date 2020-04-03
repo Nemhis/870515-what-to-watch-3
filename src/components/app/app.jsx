@@ -6,7 +6,10 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import FilmDetailInfo from '../film-detail-info/film-detail-info.jsx';
 
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+
 const MAX_SIMILAR_FILMS_COUNT = 4;
+const FilmDetailInfoWrapped = withActiveItem(FilmDetailInfo, 0);
 
 class App extends PureComponent {
   constructor(props) {
@@ -38,7 +41,7 @@ class App extends PureComponent {
     const {currentFilm} = this.state;
 
     if (currentFilm) {
-      component = <FilmDetailInfo
+      component = <FilmDetailInfoWrapped
         film={currentFilm}
         similarFilms={this._collectSimilarFilms(currentFilm)}
         onFilmNameClick={this._onFilmNameClick}
@@ -60,7 +63,7 @@ class App extends PureComponent {
             {this._renderApp(films)}
           </Route>
           <Route exact path="/dev-film-detail-info">
-            <FilmDetailInfo
+            <FilmDetailInfoWrapped
               film={films[0]}
               similarFilms={this._collectSimilarFilms(films[0])}
               onFilmNameClick={this._onFilmNameClick}
