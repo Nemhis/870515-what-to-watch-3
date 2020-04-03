@@ -1,27 +1,36 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const Tabs = ({tabs, onTabClick, activeTabIndex}) => (
-  <nav className="movie-nav movie-card__nav">
-    <ul className="movie-nav__list">
-      {tabs.map((name, index) => (
-        <li key={index} className={`movie-nav__item ${index === activeTabIndex ? `movie-nav__item--active` : ``}`}>
-          <a href="#" className="movie-nav__link" onClick={(event) => {
-            event.preventDefault();
-            onTabClick(index);
-          }}>
-            {name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+const Tabs = ({children, activeItemIndex, onActiveItemChange}) => (
+  <Fragment>
+    <nav className="movie-nav movie-card__nav">
+      <ul className="movie-nav__list">
+        {children.map((child, index) => (
+          <li key={index} className={`movie-nav__item ${index === activeItemIndex ? `movie-nav__item--active` : ``}`}>
+            <a href="#" className="movie-nav__link" onClick={(event) => {
+              event.preventDefault();
+              onActiveItemChange(index);
+            }}>
+              {child.props.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    {children[activeItemIndex]}
+  </Fragment>
 );
 
 Tabs.propTypes = {
-  activeTabIndex: PropTypes.number.isRequired,
-  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTabClick: PropTypes.func.isRequired,
+  activeItemIndex: PropTypes.number.isRequired,
+  onActiveItemChange: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node.isRequired,
+    PropTypes.arrayOf(PropTypes.elementType),
+    PropTypes.elementType.isRequired,
+  ]).isRequired,
 };
 
 export default Tabs;
