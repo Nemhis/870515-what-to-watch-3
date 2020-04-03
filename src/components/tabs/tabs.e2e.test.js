@@ -9,9 +9,9 @@ Enzyme.configure({
 });
 
 const tabs = [
-  {name: `TAB 1`},
-  {name: `TAB 2`},
-  {name: `TAB 3`},
+  `TAB 1`,
+  `TAB 2`,
+  `TAB 3`,
 ];
 
 describe(`<Tabs> e2e tests`, () => {

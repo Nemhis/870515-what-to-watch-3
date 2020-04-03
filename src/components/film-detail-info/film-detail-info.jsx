@@ -34,6 +34,7 @@ class FilmDetailInfo extends PureComponent {
       onItemSelect
     } = this.props;
     const ActiveTabComponent = tabs[activeItemIndex].component;
+    const tabNames = tabs.map((tab) => tab.name);
 
     const {
       backgroundImg,
@@ -104,7 +105,7 @@ class FilmDetailInfo extends PureComponent {
               </div>
 
               <div className="movie-card__desc">
-                <Tabs activeTabIndex={activeItemIndex} tabs={tabs} onTabClick={onItemSelect}/>
+                <Tabs activeTabIndex={activeItemIndex} tabs={tabNames} onTabClick={onItemSelect}/>
 
                 <ActiveTabComponent film={film} />
               </div>
