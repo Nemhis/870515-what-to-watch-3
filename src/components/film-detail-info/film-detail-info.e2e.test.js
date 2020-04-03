@@ -35,6 +35,8 @@ describe(`<FilmCard> e2e tests`, () => {
         <FilmDetailInfo
           film={film}
           onNameClick={onFilmClick}
+          activeItemIndex={0}
+          onItemSelect={() => {}}
         />
     );
 
@@ -52,6 +54,8 @@ describe(`<FilmCard> e2e tests`, () => {
         <FilmDetailInfo
           film={film}
           onPosterClick={onPosterClick}
+          activeItemIndex={0}
+          onItemSelect={() => {}}
         />
     );
 

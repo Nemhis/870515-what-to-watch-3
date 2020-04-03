@@ -25,7 +25,7 @@ const film = {
 
 it(`Render correctly <FilmDetailInfo>`, () => {
   const tree = renderer
-    .create(<FilmDetailInfo film={film}/>)
+    .create(<FilmDetailInfo film={film} activeItemIndex={0} onItemSelect={() => {}} />)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();
