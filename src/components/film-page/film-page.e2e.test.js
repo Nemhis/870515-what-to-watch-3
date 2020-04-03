@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import FilmDetailInfo from './film-detail-info.jsx';
+import FilmPage from './film-page.jsx';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -32,7 +32,7 @@ describe(`<FilmCard> e2e tests`, () => {
   it(`Film name should be pressed`, () => {
     const onFilmClick = jest.fn();
     const filmDetail = shallow(
-        <FilmDetailInfo
+        <FilmPage
           film={film}
           onNameClick={onFilmClick}
           activeItemIndex={0}
@@ -51,7 +51,7 @@ describe(`<FilmCard> e2e tests`, () => {
   it(`Film poster should be pressed`, () => {
     const onPosterClick = jest.fn();
     const filmDetail = shallow(
-        <FilmDetailInfo
+        <FilmPage
           film={film}
           onPosterClick={onPosterClick}
           activeItemIndex={0}

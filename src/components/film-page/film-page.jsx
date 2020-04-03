@@ -22,7 +22,7 @@ const tabs = [
   }
 ];
 
-class FilmDetailInfo extends PureComponent {
+class FilmPage extends PureComponent {
   render() {
     const {
       film,
@@ -142,14 +142,14 @@ class FilmDetailInfo extends PureComponent {
   }
 }
 
-FilmDetailInfo.defaultProps = {
+FilmPage.defaultProps = {
   onNameClick: () => {},
   onPosterClick: () => {},
   onFilmNameClick: () => {},
   similarFilms: [],
 };
 
-FilmDetailInfo.propTypes = {
+FilmPage.propTypes = {
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
     posterImg: PropTypes.string.isRequired,
@@ -166,4 +166,4 @@ FilmDetailInfo.propTypes = {
   onPosterClick: PropTypes.func,
 };
 
-export default FilmDetailInfo;
+export default FilmPage;

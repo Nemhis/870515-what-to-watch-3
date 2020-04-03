@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmDetailInfo from './film-detail-info.jsx';
+import FilmPage from './film-page.jsx';
 
 const film = {
   id: 1,
@@ -25,7 +25,7 @@ const film = {
 
 it(`Render correctly <FilmDetailInfo>`, () => {
   const tree = renderer
-    .create(<FilmDetailInfo film={film} activeItemIndex={0} onItemSelect={() => {}} />)
+    .create(<FilmPage film={film} activeItemIndex={0} onItemSelect={() => {}} />)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

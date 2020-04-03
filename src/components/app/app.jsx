@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
-import FilmDetailInfo from '../film-detail-info/film-detail-info.jsx';
+import FilmPage from '../film-detail-info/film-page.jsx';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const MAX_SIMILAR_FILMS_COUNT = 4;
-const FilmDetailInfoWrapped = withActiveItem(FilmDetailInfo, 0);
+const FilmDetailInfoWrapped = withActiveItem(FilmPage, 0);
 
 class App extends PureComponent {
   constructor(props) {
