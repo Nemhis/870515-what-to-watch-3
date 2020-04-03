@@ -2,39 +2,25 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import Tabs from '../tabs/tabs.jsx';
+import Tab from '../tab/tab.jsx';
 import FilmsList from '../films-list/films-list.jsx';
 import FilmOverview from '../film-overview/film-overview.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import FilmReviews from '../film-reviews/film-reviews.jsx';
 
-const tabs = [
-  {
-    name: `Overview`,
-    component: FilmOverview,
-  },
-  {
-    name: `Details`,
-    component: FilmDetails,
-  },
-  {
-    name: `Reviews`,
-    component: FilmReviews,
-  }
-];
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+
+const TabsWrapped = withActiveItem(Tabs, 0);
 
 class FilmPage extends PureComponent {
   render() {
     const {
       film,
       similarFilms,
-      activeItemIndex,
       onNameClick,
       onPosterClick,
       onFilmNameClick,
-      onItemSelect
     } = this.props;
-    const ActiveTabComponent = tabs[activeItemIndex].component;
-    const tabNames = tabs.map((tab) => tab.name);
 
     const {
       backgroundImg,
@@ -105,9 +91,11 @@ class FilmPage extends PureComponent {
               </div>
 
               <div className="movie-card__desc">
-                <Tabs activeTabIndex={activeItemIndex} tabs={tabNames} onTabClick={onItemSelect}/>
-
-                <ActiveTabComponent film={film} />
+                <TabsWrapped>
+                  <Tab name={`Overview`}> <FilmOverview film={film}/> </Tab>
+                  <Tab name={`Details`}> <FilmDetails film={film}/> </Tab>
+                  <Tab name={`Reviews`}> <FilmReviews /> </Tab>
+                </TabsWrapped>
               </div>
             </div>
           </div>
@@ -158,9 +146,7 @@ FilmPage.propTypes = {
     released: PropTypes.number.isRequired,
   }).isRequired,
   similarFilms: PropTypes.arrayOf(PropTypes.object),
-  activeItemIndex: PropTypes.number.isRequired,
 
-  onItemSelect: PropTypes.func.isRequired,
   onFilmNameClick: PropTypes.func,
   onNameClick: PropTypes.func,
   onPosterClick: PropTypes.func,
