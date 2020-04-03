@@ -21,7 +21,7 @@ const withActiveItem = (Component, startItemIndex) => {
 
       return <Component
         {...this.props}
-        onItemSelect={this._onItemSelect}
+        onActiveItemChange={this._onItemSelect}
         activeItemIndex={activeItemIndex}
       />;
     }
