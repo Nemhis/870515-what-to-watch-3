@@ -3,6 +3,7 @@ import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import Tabs from './tabs';
+import Tab from '../tab/tab';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -16,12 +17,18 @@ const tabs = [
 
 describe(`<Tabs> e2e tests`, () => {
   it(`Active tab should correctly switch`, () => {
-    const tabsWrapper = shallow(<Tabs tabs={tabs} onTabClick={() => {}} activeTabIndex={0}/>);
+    const tabsWrapper = shallow(
+        <Tabs onActiveItemChange={() => {}} activeItemIndex={0}>
+          <Tab name={tabs[0]}><span>{tabs[0]}</span></Tab>
+          <Tab name={tabs[1]}><span>{tabs[1]}</span></Tab>
+          <Tab name={tabs[2]}><span>{tabs[2]}</span></Tab>
+        </Tabs>
+    );
 
     const firstTabItem = tabsWrapper.find(`.movie-nav__item`).at(0);
     expect(firstTabItem.hasClass(`movie-nav__item--active`)).toBe(true);
 
-    tabsWrapper.setProps({activeTabIndex: 1});
+    tabsWrapper.setProps({activeItemIndex: 1});
 
     const secondTabItem = tabsWrapper.find(`.movie-nav__item`).at(1);
     expect(secondTabItem.hasClass(`movie-nav__item--active`)).toBe(true);
@@ -29,7 +36,13 @@ describe(`<Tabs> e2e tests`, () => {
 
   it(`Click on tab should pass correct tab index`, () => {
     const onTabClick = jest.fn((...args) => [...args]);
-    const tabsWrapper = mount(<Tabs tabs={tabs} onTabClick={onTabClick} activeTabIndex={0}/>);
+    const tabsWrapper = mount(
+        <Tabs onActiveItemChange={onTabClick} activeItemIndex={0}>
+          <Tab name={tabs[0]}><span>{tabs[0]}</span></Tab>
+          <Tab name={tabs[1]}><span>{tabs[1]}</span></Tab>
+          <Tab name={tabs[2]}><span>{tabs[2]}</span></Tab>
+        </Tabs>
+    );
 
     tabsWrapper
       .find(`.movie-nav__item .movie-nav__link`)
