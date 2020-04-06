@@ -105,6 +105,7 @@ describe(`Reducer tests`, () => {
         films,
         genres,
         selectedGenre: DEFAULT_GENRE_ITEM,
+        selectedFilm: null,
       });
   });
 
@@ -113,6 +114,7 @@ describe(`Reducer tests`, () => {
       films,
       genres,
       selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
     }, {
       type: ActionType.CHANGE_GENRE_FILTER,
       payload: `test genre`
@@ -120,6 +122,7 @@ describe(`Reducer tests`, () => {
       films,
       genres,
       selectedGenre: `test genre`,
+      selectedFilm: null,
     });
   });
 
@@ -128,6 +131,7 @@ describe(`Reducer tests`, () => {
       films,
       genres,
       selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
     }, {
       type: ActionType.UPDATE_FILMS,
       payload: [{name: `Test film`}]
@@ -135,6 +139,7 @@ describe(`Reducer tests`, () => {
       films: [{name: `Test film`}],
       genres,
       selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
     });
   });
 
@@ -143,6 +148,7 @@ describe(`Reducer tests`, () => {
       films,
       genres,
       selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
     }, {
       type: ActionType.UPDATE_GENRES_LIST,
       payload: [`Test genre`]
@@ -150,6 +156,26 @@ describe(`Reducer tests`, () => {
       films,
       genres: [`Test genre`],
       selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
+    });
+  });
+
+  it(`Reducer should select film`, () => {
+    const film = {id: 1};
+
+    expect(reducer({
+      films,
+      genres,
+      selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: null,
+    }, {
+      type: ActionType.SELECT_FILM,
+      payload: film
+    })).toEqual({
+      films,
+      genres,
+      selectedGenre: DEFAULT_GENRE_ITEM,
+      selectedFilm: film,
     });
   });
 });

@@ -9,6 +9,7 @@ const genres = ActionCreator.updateGenresList(films).payload;
 const initialState = {
   films,
   selectedGenre: DEFAULT_GENRE_ITEM,
+  selectedFilm: null,
   genres,
 };
 
@@ -24,6 +25,9 @@ const reducer = (state = initialState, action) => {
       break;
     case ActionType.UPDATE_GENRES_LIST:
       newState = {genres: action.payload};
+      break;
+    case ActionType.SELECT_FILM:
+      newState = {selectedFilm: action.payload};
       break;
   }
 

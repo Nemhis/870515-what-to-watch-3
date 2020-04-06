@@ -119,4 +119,14 @@ describe(`Action creators work correctly`, () => {
         payload: [DEFAULT_GENRE_ITEM, `1`, `2`],
       });
   });
+
+  it(`Select film action return correct value`, () => {
+    const film = {id: 1};
+
+    expect(ActionCreator.selectFilm({id: 1}))
+      .toEqual({
+        type: ActionType.SELECT_FILM,
+        payload: film,
+      });
+  });
 });

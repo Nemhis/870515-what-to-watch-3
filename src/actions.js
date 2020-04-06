@@ -8,6 +8,7 @@ const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
   UPDATE_FILMS: `UPDATE_FILMS`,
   UPDATE_GENRES_LIST: `UPDATE_GENRES_LIST`,
+  SELECT_FILM: `SELECT_FILM`,
 };
 
 const ActionCreator = {
@@ -40,6 +41,13 @@ const ActionCreator = {
     return ({
       type: ActionType.UPDATE_GENRES_LIST,
       payload: genres,
+    });
+  },
+
+  selectFilm(film) {
+    return ({
+      type: ActionType.SELECT_FILM,
+      payload: film,
     });
   },
 };
