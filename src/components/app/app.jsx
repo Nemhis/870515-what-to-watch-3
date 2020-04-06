@@ -9,16 +9,6 @@ import FilmPage from '../film-page/film-page.jsx';
 const MAX_SIMILAR_FILMS_COUNT = 4;
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentFilm: null,
-    };
-
-    this._onFilmNameClick = this._onFilmNameClick.bind(this);
-  }
-
   _collectSimilarFilms(film) {
     // TODO: бизнес логика ?
     let similarFilms = this.props.films.filter((filmItem) => filmItem.genre === film.genre);
@@ -27,25 +17,18 @@ class App extends PureComponent {
     return similarFilms;
   }
 
-  _onFilmNameClick(selectedFilm) {
-    this.setState({
-      currentFilm: selectedFilm,
-    });
-  }
-
   _renderApp(films) {
-    let component = null;
-    const {currentFilm} = this.state;
-
-    if (currentFilm) {
-      component = <FilmPage
-        film={currentFilm}
-        similarFilms={this._collectSimilarFilms(currentFilm)}
-        onFilmNameClick={this._onFilmNameClick}
-      />;
-    } else {
-      component = <Main films={films} onFilmNameClick={this._onFilmNameClick} />;
-    }
+    // let component = null;
+    // const {currentFilm} = this.state;
+    //
+    // if (currentFilm) {
+    //   component = <FilmPage
+    //     film={currentFilm}
+    //     similarFilms={this._collectSimilarFilms(currentFilm)}
+    //   />;
+    // } else {
+    const component = <Main films={films} />;
+    // }
 
     return component;
   }
@@ -63,7 +46,6 @@ class App extends PureComponent {
             <FilmPage
               film={films[0]}
               similarFilms={this._collectSimilarFilms(films[0])}
-              onFilmNameClick={this._onFilmNameClick}
             />
           </Route>
         </Switch>

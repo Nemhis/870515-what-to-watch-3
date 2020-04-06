@@ -13,7 +13,10 @@ const FilmCard = ({film, onFilmClick, renderVideoPlayer, onMouseEnter, onMouseLe
         {renderVideoPlayer(film)}
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="#" onClick={() => onFilmClick(film)}>{name}</a>
+        <a className="small-movie-card__link" href="#" onClick={(event) => {
+          event.preventDefault();
+          onFilmClick(film);
+        }}>{name}</a>
       </h3>
     </article>
   );

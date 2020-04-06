@@ -32,7 +32,7 @@ describe(`<FilmCard> e2e tests`, () => {
     filmCard
       .find(`.small-movie-card__link`)
       .at(0)
-      .simulate(`click`);
+      .simulate(`click`, {preventDefault() {}});
 
     expect(onFilmClick.mock.calls.length).toBe(1);
   });

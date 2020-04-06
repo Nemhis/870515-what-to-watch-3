@@ -7,7 +7,7 @@ import GenresList from '../genres-list/genres-list.jsx';
 
 import {ActionCreator} from '../../actions';
 
-const Main = ({films, genres, onFilmNameClick, selectedGenre, onSelectGenre}) => {
+const Main = ({films, genres, selectedGenre, onSelectGenre}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -70,7 +70,7 @@ const Main = ({films, genres, onFilmNameClick, selectedGenre, onSelectGenre}) =>
 
           <GenresList genres={genres} selectedGenre={selectedGenre} onSelectGenre={onSelectGenre}/>
 
-          <FilmsList films={films} onFilmNameClick={onFilmNameClick} />
+          <FilmsList films={films} />
         </section>
       </div>
     </React.Fragment>
@@ -81,9 +81,7 @@ Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedGenre: PropTypes.string,
-
   onSelectGenre: PropTypes.func.isRequired,
-  onFilmNameClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

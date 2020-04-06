@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import FilmCard from '../film-card/film-card.jsx';
 import withVideoPreview from '../../hocs/with-video-preview/with-video-preview.jsx';
+
+import {ActionCreator} from '../../actions';
 
 const FilmCardWrapped = withVideoPreview(FilmCard);
 
@@ -27,4 +30,11 @@ FilmsList.propTypes = {
   onFilmNameClick: PropTypes.func,
 };
 
-export default FilmsList;
+const mapDispatchToProps = (dispatch) => ({
+  onFilmNameClick: (film) => {
+    dispatch(ActionCreator.selectFilm(film));
+  }
+});
+
+export {FilmsList};
+export default connect(() => ({}), mapDispatchToProps)(FilmsList);

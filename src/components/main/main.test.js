@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import {Main} from './main.jsx';
 
@@ -23,9 +23,8 @@ const films = [
 const genres = [`Genre 1`, `Genre 2`];
 
 it(`Render correctly <Main>`, () => {
-  const tree = renderer
-    .create(<Main films={films} genres={genres} onSelectGenre={() => {}} />)
-    .toJSON(`test`);
+  const shallowRenderer = new ShallowRenderer();
+  const tree = shallowRenderer.render(<Main films={films} genres={genres} onSelectGenre={() => {}} />);
 
   expect(tree).toMatchSnapshot();
 });

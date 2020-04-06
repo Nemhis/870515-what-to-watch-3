@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmsList from './films-list';
+import {FilmsList} from './films-list.jsx';
 
 const films = [
   {
