@@ -3,7 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
-import App from './app.jsx';
+import {App} from './app.jsx';
+import {Screen} from '../../const';
 
 const mockStore = configureStore([]);
 
@@ -33,10 +34,11 @@ it(`Render correctly <App>`, () => {
   const store = mockStore({
     films,
     genres: [],
+    screen: Screen.MAIN,
   });
 
   const tree = renderer
-    .create(<Provider store={store}><App /></Provider>)
+    .create(<Provider store={store}><App screen={Screen.MAIN}/></Provider>)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

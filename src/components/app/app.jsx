@@ -6,47 +6,34 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import FilmPage from '../film-page/film-page.jsx';
 
-const MAX_SIMILAR_FILMS_COUNT = 4;
+import {Screen} from '../../const';
 
 class App extends PureComponent {
-  _collectSimilarFilms(film) {
-    // TODO: бизнес логика ?
-    let similarFilms = this.props.films.filter((filmItem) => filmItem.genre === film.genre);
-    similarFilms = similarFilms.slice(0, MAX_SIMILAR_FILMS_COUNT);
+  _renderApp(screen) {
+    let component = null;
 
-    return similarFilms;
-  }
-
-  _renderApp(films) {
-    // let component = null;
-    // const {currentFilm} = this.state;
-    //
-    // if (currentFilm) {
-    //   component = <FilmPage
-    //     film={currentFilm}
-    //     similarFilms={this._collectSimilarFilms(currentFilm)}
-    //   />;
-    // } else {
-    const component = <Main films={films} />;
-    // }
+    switch (screen) {
+      case Screen.MAIN:
+        component = <Main />;
+        break;
+      case Screen.FILM_PAGE:
+        component = <FilmPage />;
+    }
 
     return component;
   }
 
   render() {
-    const {films} = this.props;
+    const {screen} = this.props;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this._renderApp(films)}
+            {this._renderApp(screen)}
           </Route>
           <Route exact path="/dev-film-detail-info">
-            <FilmPage
-              film={films[0]}
-              similarFilms={this._collectSimilarFilms(films[0])}
-            />
+            <FilmPage />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -55,11 +42,11 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object)
+  screen: PropTypes.oneOf([Screen.MAIN, Screen.FILM_PAGE]),
 };
 
 const mapStateToProps = (state) => ({
-  films: state.films,
+  screen: state.screen,
 });
 
 export {App};
