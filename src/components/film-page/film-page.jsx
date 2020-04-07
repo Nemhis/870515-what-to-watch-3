@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Tabs from '../tabs/tabs.jsx';
 import Tab from '../tab/tab.jsx';
@@ -11,12 +12,19 @@ import FilmReviews from '../film-reviews/film-reviews.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const TabsWrapped = withActiveItem(Tabs, 0);
+const MAX_SIMILAR_FILMS_COUNT = 4;
 
 class FilmPage extends PureComponent {
+  _collectSimilarFilms({id, genre}) {
+    let similarFilms = this.props.films.filter((film) => film.genre === genre && film.id !== id);
+    similarFilms = similarFilms.slice(0, MAX_SIMILAR_FILMS_COUNT);
+
+    return similarFilms;
+  }
+
   render() {
     const {
       film,
-      similarFilms,
       onNameClick,
       onPosterClick,
       onFilmNameClick,
@@ -29,6 +37,8 @@ class FilmPage extends PureComponent {
       genre,
       released,
     } = film;
+
+    const similarFilms = this._collectSimilarFilms(film);
 
     return (
       <React.Fragment>
@@ -134,10 +144,10 @@ FilmPage.defaultProps = {
   onNameClick: () => {},
   onPosterClick: () => {},
   onFilmNameClick: () => {},
-  similarFilms: [],
 };
 
 FilmPage.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   film: PropTypes.shape({
     name: PropTypes.string.isRequired,
     posterImg: PropTypes.string.isRequired,
@@ -145,11 +155,16 @@ FilmPage.propTypes = {
     genre: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
   }).isRequired,
-  similarFilms: PropTypes.arrayOf(PropTypes.object),
 
   onFilmNameClick: PropTypes.func,
   onNameClick: PropTypes.func,
   onPosterClick: PropTypes.func,
 };
 
-export default FilmPage;
+const mapStateToProps = (state) => ({
+  film: state.selectedFilm,
+  films: state.films,
+});
+
+export {FilmPage};
+export default connect(mapStateToProps)(FilmPage);

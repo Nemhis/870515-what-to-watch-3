@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmPage from './film-page.jsx';
+import {FilmPage} from './film-page.jsx';
 
 const film = {
   id: 1,
@@ -23,9 +23,20 @@ const film = {
   isFavorite: false
 };
 
+const films = [
+  {
+    id: 1,
+    genre: `Comedy`,
+  },
+  {
+    id: 2,
+    genre: `Drama`,
+  },
+];
+
 it(`Render correctly <FilmDetailInfo>`, () => {
   const tree = renderer
-    .create(<FilmPage film={film} activeItemIndex={0} onItemSelect={() => {}} />)
+    .create(<FilmPage films={films} film={film} activeItemIndex={0} onItemSelect={() => {}} />)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

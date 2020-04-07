@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import FilmPage from './film-page.jsx';
+import {FilmPage} from './film-page.jsx';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -28,11 +28,23 @@ const film = {
   isFavorite: false
 };
 
+const films = [
+  {
+    id: 1,
+    genre: `Comedy`,
+  },
+  {
+    id: 2,
+    genre: `Drama`,
+  },
+];
+
 describe(`<FilmCard> e2e tests`, () => {
   it(`Film name should be pressed`, () => {
     const onFilmClick = jest.fn();
     const filmDetail = shallow(
         <FilmPage
+          films={films}
           film={film}
           onNameClick={onFilmClick}
           activeItemIndex={0}
@@ -52,6 +64,7 @@ describe(`<FilmCard> e2e tests`, () => {
     const onPosterClick = jest.fn();
     const filmDetail = shallow(
         <FilmPage
+          films={films}
           film={film}
           onPosterClick={onPosterClick}
           activeItemIndex={0}
