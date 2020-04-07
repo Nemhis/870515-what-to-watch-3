@@ -1,4 +1,5 @@
 import {ActionType, ActionCreator, DEFAULT_GENRE_ITEM} from './actions';
+import {Screen} from './const';
 
 const films = [
   {
@@ -127,6 +128,14 @@ describe(`Action creators work correctly`, () => {
       .toEqual({
         type: ActionType.SELECT_FILM,
         payload: film,
+      });
+  });
+
+  it(`Change screen action return correct value`, () => {
+    expect(ActionCreator.changeScreen(Screen.FILM_PAGE))
+      .toEqual({
+        type: ActionType.CHANGE_SCREEN,
+        payload: Screen.FILM_PAGE,
       });
   });
 });

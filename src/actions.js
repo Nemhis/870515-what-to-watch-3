@@ -9,6 +9,7 @@ const ActionType = {
   UPDATE_FILMS: `UPDATE_FILMS`,
   UPDATE_GENRES_LIST: `UPDATE_GENRES_LIST`,
   SELECT_FILM: `SELECT_FILM`,
+  CHANGE_SCREEN: `CHANGE_SCREEN`,
 };
 
 const ActionCreator = {
@@ -48,6 +49,13 @@ const ActionCreator = {
     return ({
       type: ActionType.SELECT_FILM,
       payload: film,
+    });
+  },
+
+  changeScreen(screen) {
+    return ({
+      type: ActionType.CHANGE_SCREEN,
+      payload: screen,
     });
   },
 };

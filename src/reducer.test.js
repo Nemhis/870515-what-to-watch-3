@@ -1,5 +1,6 @@
 import {reducer} from './reducer.js';
 import {ActionType, DEFAULT_GENRE_ITEM} from './actions';
+import {Screen} from './const';
 
 const films = [
   {
@@ -106,6 +107,7 @@ describe(`Reducer tests`, () => {
         genres,
         selectedGenre: DEFAULT_GENRE_ITEM,
         selectedFilm: null,
+        screen: Screen.MAIN,
       });
   });
 
@@ -129,53 +131,44 @@ describe(`Reducer tests`, () => {
   it(`Reducer should update films list`, () => {
     expect(reducer({
       films,
-      genres,
-      selectedGenre: DEFAULT_GENRE_ITEM,
-      selectedFilm: null,
     }, {
       type: ActionType.UPDATE_FILMS,
       payload: [{name: `Test film`}]
     })).toEqual({
       films: [{name: `Test film`}],
-      genres,
-      selectedGenre: DEFAULT_GENRE_ITEM,
-      selectedFilm: null,
     });
   });
 
   it(`Reducer should update genre list`, () => {
     expect(reducer({
-      films,
       genres,
-      selectedGenre: DEFAULT_GENRE_ITEM,
-      selectedFilm: null,
     }, {
       type: ActionType.UPDATE_GENRES_LIST,
       payload: [`Test genre`]
     })).toEqual({
-      films,
       genres: [`Test genre`],
-      selectedGenre: DEFAULT_GENRE_ITEM,
-      selectedFilm: null,
     });
   });
 
   it(`Reducer should select film`, () => {
     const film = {id: 1};
 
-    expect(reducer({
-      films,
-      genres,
-      selectedGenre: DEFAULT_GENRE_ITEM,
-      selectedFilm: null,
-    }, {
+    expect(reducer({}, {
       type: ActionType.SELECT_FILM,
       payload: film
     })).toEqual({
-      films,
-      genres,
-      selectedGenre: DEFAULT_GENRE_ITEM,
       selectedFilm: film,
+    });
+  });
+
+  it(`Reducer should change screen`, () => {
+    expect(reducer({
+      screen: Screen.MAIN
+    }, {
+      type: ActionType.CHANGE_SCREEN,
+      payload: Screen.FILM_PAGE
+    })).toEqual({
+      screen: Screen.FILM_PAGE,
     });
   });
 });
