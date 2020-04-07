@@ -85,6 +85,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  films: state.films,
   selectedGenre: state.selectedGenre,
   genres: state.genres,
 });

@@ -6,6 +6,7 @@ import FilmCard from '../film-card/film-card.jsx';
 import withVideoPreview from '../../hocs/with-video-preview/with-video-preview.jsx';
 
 import {ActionCreator} from '../../actions';
+import {Screen} from '../../const';
 
 const FilmCardWrapped = withVideoPreview(FilmCard);
 
@@ -33,6 +34,7 @@ FilmsList.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onFilmNameClick: (film) => {
     dispatch(ActionCreator.selectFilm(film));
+    dispatch(ActionCreator.changeScreen(Screen.FILM_PAGE));
   }
 });
 
