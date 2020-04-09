@@ -150,16 +150,7 @@ exports[`Render correctly <Main> 1`] = `
       >
         Catalog
       </h2>
-      <GenresList
-        genres={
-          Array [
-            "Genre 1",
-            "Genre 2",
-          ]
-        }
-        onSelectGenre={[Function]}
-        selectedGenre="All genres"
-      />
+      <Memo(Connect(GenresList)) />
       <Memo(Connect(FilmsList))
         films={
           Array [

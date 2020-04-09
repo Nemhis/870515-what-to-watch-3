@@ -96,15 +96,12 @@ const films = [
   }
 ];
 
-const genres = [DEFAULT_GENRE_ITEM, `Comedy`, `Crime`, `Documentary`,
-  `Horror`, `Romance`, `Sci-Fi`, `Thrillers`, `Kids & Family`, `Test genre 1`];
-
 describe(`Reducer tests`, () => {
   it(`Default store state`, () => {
     expect(reducer(void 0, {}))
       .toEqual({
         films,
-        genres,
+        allFilms: films,
         selectedGenre: DEFAULT_GENRE_ITEM,
         selectedFilm: null,
         screen: Screen.MAIN,
@@ -114,7 +111,6 @@ describe(`Reducer tests`, () => {
   it(`Reducer should change genre filter`, () => {
     expect(reducer({
       films,
-      genres,
       selectedGenre: DEFAULT_GENRE_ITEM,
       selectedFilm: null,
     }, {
@@ -122,7 +118,6 @@ describe(`Reducer tests`, () => {
       payload: `test genre`
     })).toEqual({
       films,
-      genres,
       selectedGenre: `test genre`,
       selectedFilm: null,
     });

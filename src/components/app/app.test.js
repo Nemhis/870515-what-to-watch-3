@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 
 import {App} from './app.jsx';
 import {Screen} from '../../const';
+import {DEFAULT_GENRE_ITEM} from '../../actions';
 
 const mockStore = configureStore([]);
 
@@ -33,8 +34,9 @@ const films = [
 it(`Render correctly <App>`, () => {
   const store = mockStore({
     films,
-    genres: [],
+    allFilms: films,
     screen: Screen.MAIN,
+    selectedGenre: DEFAULT_GENRE_ITEM
   });
 
   const tree = renderer
