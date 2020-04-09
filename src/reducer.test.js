@@ -139,17 +139,6 @@ describe(`Reducer tests`, () => {
     });
   });
 
-  it(`Reducer should update genre list`, () => {
-    expect(reducer({
-      genres,
-    }, {
-      type: ActionType.UPDATE_GENRES_LIST,
-      payload: [`Test genre`]
-    })).toEqual({
-      genres: [`Test genre`],
-    });
-  });
-
   it(`Reducer should select film`, () => {
     const film = {id: 1};
 

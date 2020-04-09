@@ -1,7 +1,5 @@
 import films from './mocks/films';
-import {arrayUnique} from './utils';
 
-const MAX_GENRES_COUNT = 9;
 const DEFAULT_GENRE_ITEM = `All genres`;
 
 const ActionType = {
@@ -30,18 +28,6 @@ const ActionCreator = {
     return ({
       type: ActionType.UPDATE_FILMS,
       payload: filteredFilms,
-    });
-  },
-
-  updateGenresList(filmsForGenreList) {
-    let genres = filmsForGenreList.map((film) => film.genre);
-    genres = arrayUnique(genres);
-    genres = genres.slice(0, MAX_GENRES_COUNT);
-    genres.unshift(DEFAULT_GENRE_ITEM);
-
-    return ({
-      type: ActionType.UPDATE_GENRES_LIST,
-      payload: genres,
     });
   },
 

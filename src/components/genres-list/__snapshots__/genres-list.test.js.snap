@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render correctly <GenresList> Default active item 1`] = `
+exports[`Render correctly <GenresList> 1`] = `
 <ul
   className="catalog__genres-list"
 >
@@ -12,27 +12,9 @@ exports[`Render correctly <GenresList> Default active item 1`] = `
       href="#"
       onClick={[Function]}
     >
-      genre 1
+      All genres
     </a>
   </li>
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
-      genre 2
-    </a>
-  </li>
-</ul>
-`;
-
-exports[`Render correctly <GenresList> Genre active items 1`] = `
-<ul
-  className="catalog__genres-list"
->
   <li
     className="catalog__genres-item "
   >

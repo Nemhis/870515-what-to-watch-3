@@ -5,9 +5,7 @@ import {connect} from 'react-redux';
 import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 
-import {ActionCreator} from '../../actions';
-
-const Main = ({films, genres, selectedGenre, onSelectGenre}) => {
+const Main = ({films}) => {
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -68,7 +66,7 @@ const Main = ({films, genres, selectedGenre, onSelectGenre}) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList genres={genres} selectedGenre={selectedGenre} onSelectGenre={onSelectGenre}/>
+          <GenresList />
 
           <FilmsList films={films} />
         </section>
@@ -79,23 +77,11 @@ const Main = ({films, genres, selectedGenre, onSelectGenre}) => {
 
 Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedGenre: PropTypes.string,
-  onSelectGenre: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   films: state.films,
-  selectedGenre: state.selectedGenre,
-  genres: state.genres,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSelectGenre(selectedGenre) {
-    dispatch(ActionCreator.changeGenreFilter(selectedGenre));
-    dispatch(ActionCreator.updateFilms(selectedGenre));
-  },
 });
 
 export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

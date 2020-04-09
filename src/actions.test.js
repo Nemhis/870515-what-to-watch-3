@@ -112,15 +112,6 @@ describe(`Action creators work correctly`, () => {
       });
   });
 
-
-  it(`Update films action return correct value`, () => {
-    expect(ActionCreator.updateGenresList([{genre: `1`}, {genre: `2`}]))
-      .toEqual({
-        type: ActionType.UPDATE_GENRES_LIST,
-        payload: [DEFAULT_GENRE_ITEM, `1`, `2`],
-      });
-  });
-
   it(`Select film action return correct value`, () => {
     const film = {id: 1};
 
