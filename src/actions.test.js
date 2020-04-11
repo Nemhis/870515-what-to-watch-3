@@ -1,4 +1,4 @@
-import {ActionType, ActionCreator, DEFAULT_GENRE_ITEM} from './actions';
+import {ActionType, ActionCreator} from './actions';
 import {Screen} from './const';
 
 const films = [
@@ -104,11 +104,11 @@ describe(`Action creators work correctly`, () => {
       });
   });
 
-  it(`Update films action return correct value with default genre value`, () => {
-    expect(ActionCreator.updateFilms(DEFAULT_GENRE_ITEM))
+  it(`Apply genre filter action return correct value`, () => {
+    expect(ActionCreator.applyGenreFilter(`test genre`))
       .toEqual({
-        type: ActionType.UPDATE_FILMS,
-        payload: films,
+        type: ActionType.APPLY_GENRE_FILTER,
+        payload: `test genre`,
       });
   });
 
@@ -127,6 +127,21 @@ describe(`Action creators work correctly`, () => {
       .toEqual({
         type: ActionType.CHANGE_SCREEN,
         payload: Screen.FILM_PAGE,
+      });
+  });
+
+  it(`Change shown films count action return correct value`, () => {
+    expect(ActionCreator.changeShownFilmsCount(10))
+      .toEqual({
+        type: ActionType.CHANGE_SHOWN_FILMS_COUNT,
+        payload: 10,
+      });
+  });
+
+  it(`Slice films by shown count action return correct value`, () => {
+    expect(ActionCreator.sliceFilmsByShownCount())
+      .toEqual({
+        type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
       });
   });
 });
