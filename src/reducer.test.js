@@ -1,5 +1,5 @@
 import {reducer} from './reducer.js';
-import {ActionType, DEFAULT_GENRE_ITEM} from './actions';
+import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
 import {Screen} from './const';
 
 const films = [
@@ -100,11 +100,14 @@ describe(`Reducer tests`, () => {
   it(`Default store state`, () => {
     expect(reducer(void 0, {}))
       .toEqual({
+        shownFilms: films.slice(0, SHOWN_MOVIES_COUNT),
         films,
+        filmsCount: films.length,
         allFilms: films,
-        selectedGenre: DEFAULT_GENRE_ITEM,
         selectedFilm: null,
         screen: Screen.MAIN,
+        selectedGenre: DEFAULT_GENRE_ITEM,
+        shownMoviesCount: SHOWN_MOVIES_COUNT,
       });
   });
 
@@ -123,14 +126,58 @@ describe(`Reducer tests`, () => {
     });
   });
 
-  it(`Reducer should update films list`, () => {
+  it(`Reducer should apply genre filter`, () => {
     expect(reducer({
-      films,
+      allFilms: [
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 2`},
+      ],
     }, {
-      type: ActionType.UPDATE_FILMS,
-      payload: [{name: `Test film`}]
+      type: ActionType.APPLY_GENRE_FILTER,
+      payload: `genre 1`
     })).toEqual({
-      films: [{name: `Test film`}],
+      allFilms: [
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 2`},
+      ],
+      films: [
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+      ],
+      filmsCount: 9,
+      shownFilms: [
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+        {genre: `genre 1`},
+      ],
     });
   });
 
@@ -153,6 +200,30 @@ describe(`Reducer tests`, () => {
       payload: Screen.FILM_PAGE
     })).toEqual({
       screen: Screen.FILM_PAGE,
+    });
+  });
+
+  it(`Reducer should change shown films count`, () => {
+    expect(reducer({
+      shownMoviesCount: 10
+    }, {
+      type: ActionType.CHANGE_SHOWN_FILMS_COUNT,
+      payload: 20
+    })).toEqual({
+      shownMoviesCount: 20,
+    });
+  });
+
+  it(`Reducer should slice films by shown count`, () => {
+    expect(reducer({
+      films: [1, 2, 3, 4],
+      shownMoviesCount: 2
+    }, {
+      type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
+    })).toEqual({
+      films: [1, 2, 3, 4],
+      shownFilms: [1, 2],
+      shownMoviesCount: 2,
     });
   });
 });
