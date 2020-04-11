@@ -172,6 +172,7 @@ exports[`Render correctly <Main> 1`] = `
           ]
         }
       />
+      <Memo(Connect(ShowMoreButton)) />
     </section>
   </div>
 </React.Fragment>

@@ -12,17 +12,6 @@ exports[`Render correctly <GenresList> 1`] = `
       href="#"
       onClick={[Function]}
     >
-      All genres
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
       genre 1
     </a>
   </li>

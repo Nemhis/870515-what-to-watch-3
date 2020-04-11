@@ -9,16 +9,13 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const films = [
-  {genre: `genre 1`},
-  {genre: `genre 2`},
-];
+const genres = [`genre 1`, `genre 2`];
 
 it(`<GenresList> pass correct value on select genre`, () => {
   const onGenreSelect = jest.fn((...args) => [args]);
   const genreListWrapper = shallow(
       <GenresList
-        films={films}
+        genres={genres}
         onSelectGenre={onGenreSelect}
         selectedGenre={DEFAULT_GENRE_ITEM}
       />
@@ -26,7 +23,7 @@ it(`<GenresList> pass correct value on select genre`, () => {
 
   genreListWrapper
     .find(`.catalog__genres-link`)
-    .at(1)
+    .at(0)
     .simulate(`click`, {
       preventDefault() {},
     });

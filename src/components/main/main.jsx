@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
+import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 
 const Main = ({films}) => {
   return (
@@ -69,6 +70,8 @@ const Main = ({films}) => {
           <GenresList />
 
           <FilmsList films={films} />
+
+          <ShowMoreButton />
         </section>
       </div>
     </React.Fragment>
@@ -79,8 +82,8 @@ Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films,
+const mapStateToProps = ({shownFilms}) => ({
+  films: shownFilms,
 });
 
 export {Main};
