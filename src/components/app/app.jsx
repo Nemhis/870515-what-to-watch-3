@@ -5,8 +5,12 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
 import FilmPage from '../film-page/film-page.jsx';
+import FullSizePlayer from '../full-size-player/full-size-player.jsx';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 import {Screen} from '../../const';
+
+const FullSizePlayerWrapped = withVideoPlayer(FullSizePlayer);
 
 class App extends PureComponent {
   _renderApp(screen) {
@@ -34,6 +38,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/dev-film-detail-info">
             <FilmPage />
+          </Route>
+          <Route exact path="/full-size-player">
+            <FullSizePlayerWrapped />
           </Route>
         </Switch>
       </BrowserRouter>
