@@ -10,7 +10,7 @@ class VideoPlayer extends PureComponent {
   render() {
     const {poster, src, muted, width, height} = this.props;
 
-    return <video width={width} height={height} poster={poster} src={src} muted={muted} ref={this._videoRef} />;
+    return <video width={width} height={height} poster={poster} src={src} muted={muted} ref={this._videoRef} autoPlay />;
   }
 
   componentDidMount() {
@@ -22,6 +22,8 @@ class VideoPlayer extends PureComponent {
         timeLeft: Math.floor(video.duration - video.currentTime)
       });
     };
+
+    video.onended = this.props.onEnded;
   }
 
   componentDidUpdate() {
@@ -44,6 +46,7 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.defaultProps = {
   onTimeUpdate: () => {},
+  onEnded: () => {},
   isFullScreen: false,
   muted: false,
 };
@@ -57,6 +60,7 @@ VideoPlayer.propTypes = {
 
   isFullScreen: PropTypes.bool,
   onTimeUpdate: PropTypes.func,
+  onEnded: PropTypes.func,
   muted: PropTypes.bool
 };
 

@@ -26,6 +26,11 @@ const withVideoPlayer = (Component) => {
         onTimeUpdate={({elapsedTime, timeLeft, duration}) => {
           this.setState({elapsedTime, timeLeft, duration});
         }}
+        onEnded={() => {
+          this.setState({
+            isPlaying: false
+          });
+        }}
         width={`100%`}
         height={`100%`}
       />;
