@@ -37,7 +37,7 @@ class FullSizePlayer extends PureComponent {
   }
 
   render() {
-    const {film, renderPlayer, elapsedTime, duration, onRequestFullScreen} = this.props;
+    const {film, renderPlayer, elapsedTime, duration, onRequestFullScreen, onExit} = this.props;
     const {name} = film;
     let elapsedTimePercent = 0;
     let formattedElapsedTime = ``;
@@ -51,7 +51,7 @@ class FullSizePlayer extends PureComponent {
       <div className="player">
         {renderPlayer(film)}
 
-        <button type="button" className="player__exit">Exit</button>
+        <button type="button" className="player__exit" onClick={onExit}>Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -88,6 +88,7 @@ FullSizePlayer.propTypes = {
   onPlay: PropTypes.func.isRequired,
   onPause: PropTypes.func.isRequired,
   onRequestFullScreen: PropTypes.func.isRequired,
+  onExit: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   elapsedTime: PropTypes.number,
   duration: PropTypes.number.isRequired,
@@ -97,5 +98,12 @@ const mapStateToProps = ({playedFilm}) => ({
   film: playedFilm,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onExit() {
+    // TODO: dispatch
+    console.log(`TODO: dispatch`);
+  }
+});
+
 export {FullSizePlayer};
-export default connect(mapStateToProps)(FullSizePlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(FullSizePlayer);
