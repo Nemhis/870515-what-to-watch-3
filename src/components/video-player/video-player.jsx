@@ -40,8 +40,6 @@ class VideoPlayer extends PureComponent {
 
     if (isFullScreen) {
       video.requestFullscreen();
-    } else {
-      document.exitFullscreen().catch(() => {});
     }
   }
 }

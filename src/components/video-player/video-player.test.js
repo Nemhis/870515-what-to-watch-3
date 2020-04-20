@@ -9,6 +9,10 @@ const film = {
 };
 
 it(`Render correctly <VideoPlayer>`, () => {
+  const options = {
+    createNodeMock: () => ({}),
+  };
+
   const tree = renderer
     .create(
         <VideoPlayer
@@ -17,7 +21,7 @@ it(`Render correctly <VideoPlayer>`, () => {
           poster={film.previewImg}
           width={`100`}
           height={`100`}
-        />
+        />, options
     ).toJSON(`test`);
 
   expect(tree).toMatchSnapshot();
