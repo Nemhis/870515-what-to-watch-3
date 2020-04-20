@@ -17,7 +17,7 @@ class FullSizePlayer extends PureComponent {
       button = (
         <button type="button" className="player__play" onClick={onPause}>
           <svg viewBox="0 0 14 21" width="14" height="21">
-            <use xlinkHref="#pause"></use>
+            <use xlinkHref="#pause" />
           </svg>
           <span>Pause</span>
         </button>
@@ -37,7 +37,7 @@ class FullSizePlayer extends PureComponent {
   }
 
   render() {
-    const {film, renderPlayer, elapsedTime, duration} = this.props;
+    const {film, renderPlayer, elapsedTime, duration, onRequestFullScreen} = this.props;
     const {name} = film;
     let elapsedTimePercent = 0;
     let formattedElapsedTime = ``;
@@ -67,7 +67,7 @@ class FullSizePlayer extends PureComponent {
 
             <div className="player__name">{name}</div>
 
-            <button type="button" className="player__full-screen">
+            <button type="button" className="player__full-screen" onClick={onRequestFullScreen}>
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen" />
               </svg>
@@ -87,6 +87,7 @@ FullSizePlayer.propTypes = {
   renderPlayer: PropTypes.func.isRequired,
   onPlay: PropTypes.func.isRequired,
   onPause: PropTypes.func.isRequired,
+  onRequestFullScreen: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   elapsedTime: PropTypes.number,
   duration: PropTypes.number.isRequired,

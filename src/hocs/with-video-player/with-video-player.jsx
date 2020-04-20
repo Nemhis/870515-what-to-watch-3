@@ -8,6 +8,7 @@ const withVideoPlayer = (Component) => {
 
       this.state = {
         isPlaying: false,
+        isFullScreen: false,
         elapsedTime: 0,
         timeLeft: 0,
         duration: 0,
@@ -21,6 +22,7 @@ const withVideoPlayer = (Component) => {
         src={videoLink}
         poster={previewImg}
         isPlaying={this.state.isPlaying}
+        isFullScreen={this.state.isFullScreen}
         onTimeUpdate={({elapsedTime, timeLeft, duration}) => {
           this.setState({elapsedTime, timeLeft, duration});
         }}
@@ -45,6 +47,11 @@ const withVideoPlayer = (Component) => {
           onPause={() => {
             this.setState({
               isPlaying: false,
+            });
+          }}
+          onRequestFullScreen={() => {
+            this.setState({
+              isFullScreen: true,
             });
           }}
         />

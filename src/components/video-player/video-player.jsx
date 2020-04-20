@@ -13,18 +13,38 @@ class VideoPlayer extends PureComponent {
     return <video width={width} height={height} poster={poster} src={src} muted={muted} ref={this._videoRef} />;
   }
 
+  componentDidMount() {
+    const video = this._videoRef.current;
+    video.ontimeupdate = () => {
+      this.props.onTimeUpdate({
+        elapsedTime: Math.floor(video.currentTime),
+        duration: Math.floor(video.duration),
+        timeLeft: Math.floor(video.duration - video.currentTime)
+      });
+    };
+  }
+
   componentDidUpdate() {
+    const {isPlaying, isFullScreen} = this.props;
     const video = this._videoRef.current;
 
-    if (this.props.isPlaying) {
+    if (isPlaying) {
       video.play();
     } else {
-      video.load();
+      video.pause();
+    }
+
+    if (isFullScreen) {
+      video.requestFullscreen();
+    } else {
+      document.exitFullscreen().catch(() => {});
     }
   }
 }
 
 VideoPlayer.defaultProps = {
+  onTimeUpdate: () => {},
+  isFullScreen: false,
   muted: false,
 };
 
@@ -35,6 +55,8 @@ VideoPlayer.propTypes = {
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
 
+  isFullScreen: PropTypes.bool,
+  onTimeUpdate: PropTypes.func,
   muted: PropTypes.bool
 };
 
