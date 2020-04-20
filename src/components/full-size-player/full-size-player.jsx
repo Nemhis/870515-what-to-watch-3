@@ -6,7 +6,9 @@ import {formatDuration} from '../../utils';
 
 class FullSizePlayer extends PureComponent {
   componentDidMount() {
-    this.props.onPlay();
+    if (this.props.isPlaying) {
+      this.props.onPlay();
+    }
   }
 
   _renderPlayButton() {
@@ -89,9 +91,10 @@ FullSizePlayer.propTypes = {
   onPause: PropTypes.func.isRequired,
   onRequestFullScreen: PropTypes.func.isRequired,
   onExit: PropTypes.func.isRequired,
+
   isPlaying: PropTypes.bool.isRequired,
-  elapsedTime: PropTypes.number,
   duration: PropTypes.number.isRequired,
+  elapsedTime: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = ({playedFilm}) => ({

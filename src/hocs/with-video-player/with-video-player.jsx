@@ -7,7 +7,7 @@ const withVideoPlayer = (Component) => {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isPlaying: true,
         isFullScreen: false,
         elapsedTime: 0,
         timeLeft: 0,
