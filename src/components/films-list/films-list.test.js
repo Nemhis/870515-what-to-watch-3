@@ -27,8 +27,12 @@ const films = [
 ];
 
 it(`Render correctly <FilmCard>`, () => {
+  const options = {
+    createNodeMock: () => ({}),
+  };
+
   const tree = renderer
-    .create(<FilmsList films={films} />).toJSON(`test`);
+    .create(<FilmsList films={films} />, options).toJSON(`test`);
 
   expect(tree).toMatchSnapshot();
 });

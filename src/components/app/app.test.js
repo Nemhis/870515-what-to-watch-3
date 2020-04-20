@@ -32,6 +32,10 @@ const films = [
 ];
 
 it(`Render correctly <App>`, () => {
+  const options = {
+    createNodeMock: () => ({}),
+  };
+
   const store = mockStore({
     shownFilms: films.slice(0, SHOWN_MOVIES_COUNT),
     films,
@@ -44,7 +48,7 @@ it(`Render correctly <App>`, () => {
   });
 
   const tree = renderer
-    .create(<Provider store={store}><App screen={Screen.MAIN}/></Provider>)
+    .create(<Provider store={store}><App screen={Screen.MAIN}/></Provider>, options)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();
