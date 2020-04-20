@@ -10,6 +10,7 @@ const withVideoPreview = (Component) => {
 
       this.state = {
         isPlaying: false,
+        isStopped: false,
         inFocus: false,
       };
 
@@ -20,7 +21,8 @@ const withVideoPreview = (Component) => {
 
     _onMouseEnter() {
       this.setState({
-        inFocus: true
+        inFocus: true,
+        isStopped: false,
       });
 
       setTimeout(() => {
@@ -34,6 +36,7 @@ const withVideoPreview = (Component) => {
       this.setState({
         inFocus: false,
         isPlaying: false,
+        isStopped: true,
       });
     }
 
@@ -42,6 +45,7 @@ const withVideoPreview = (Component) => {
         src={previewVideoLink}
         poster={previewImg}
         isPlaying={this.state.isPlaying}
+        isStopped={this.state.isStopped}
         width={`100%`}
         height={`100%`}
         muted={true}
