@@ -50,4 +50,12 @@ describe(`Action creators work correctly`, () => {
         type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
       });
   });
+
+  it(`Set current film action return correct value`, () => {
+    expect(ActionCreator.setPlayedFilm({name: `test film`}))
+      .toEqual({
+        type: ActionType.SET_PLAYED_FILM,
+        payload: {name: `test film`},
+      });
+  });
 });

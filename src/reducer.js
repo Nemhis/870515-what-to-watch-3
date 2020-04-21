@@ -12,6 +12,7 @@ const initialState = {
   screen: Screen.MAIN,
   selectedGenre: DEFAULT_GENRE_ITEM,
   shownMoviesCount: SHOWN_MOVIES_COUNT,
+  playedFilm: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,6 +47,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.SLICE_FILMS_BY_SHOWN_COUNT:
       newState = {
         shownFilms: state.films.slice(0, state.shownMoviesCount)
+      };
+      break;
+    case ActionType.SET_PLAYED_FILM:
+      newState = {
+        playedFilm: action.payload,
       };
       break;
   }

@@ -108,6 +108,7 @@ describe(`Reducer tests`, () => {
         screen: Screen.MAIN,
         selectedGenre: DEFAULT_GENRE_ITEM,
         shownMoviesCount: SHOWN_MOVIES_COUNT,
+        playedFilm: null,
       });
   });
 
@@ -224,6 +225,17 @@ describe(`Reducer tests`, () => {
       films: [1, 2, 3, 4],
       shownFilms: [1, 2],
       shownMoviesCount: 2,
+    });
+  });
+
+  it(`Reducer should set played film`, () => {
+    expect(reducer({
+      playedFilm: null,
+    }, {
+      type: ActionType.SET_PLAYED_FILM,
+      payload: {name: `test film`},
+    })).toEqual({
+      playedFilm: {name: `test film`},
     });
   });
 });
