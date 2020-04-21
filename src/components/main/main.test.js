@@ -6,6 +6,10 @@ import {Main} from './main.jsx';
 const films = [
   {
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    posterImg: `img/the-grand-budapest-hotel-poster.jpg`,
+    backgroundImg: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Comedy`,
+    released: 2014,
     previewImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },

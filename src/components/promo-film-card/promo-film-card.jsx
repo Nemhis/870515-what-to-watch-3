@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ActionCreator} from '../../actions';
+import {connect} from 'react-redux';
 
 const PromoFilmCard = ({film, onPlayButtonClick}) => {
   const {
@@ -80,4 +82,11 @@ PromoFilmCard.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 
-export default PromoFilmCard;
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick(film) {
+    dispatch(ActionCreator.setPlayedFilm(film));
+  }
+});
+
+export {PromoFilmCard};
+export default connect(() => ({}), mapDispatchToProps)(PromoFilmCard);

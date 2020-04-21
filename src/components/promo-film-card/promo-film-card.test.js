@@ -1,7 +1,7 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import PromoFilmCard from './promo-film-card.jsx';
+import {PromoFilmCard} from './promo-film-card.jsx';
 
 const film = {
   name: `The Grand Budapest Hotel`,
