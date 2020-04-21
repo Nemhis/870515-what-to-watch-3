@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {formatDuration} from '../../utils';
+import {ActionCreator} from '../../actions';
 
 class FullSizePlayer extends PureComponent {
-  componentDidMount() {
-    if (this.props.isPlaying) {
-      this.props.onPlay();
-    }
-  }
-
   _renderPlayButton() {
     const {isPlaying, onPlay, onPause} = this.props;
     let button;
@@ -97,16 +92,11 @@ FullSizePlayer.propTypes = {
   elapsedTime: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({playedFilm}) => ({
-  film: playedFilm,
-});
-
 const mapDispatchToProps = (dispatch) => ({
   onExit() {
-    // TODO: dispatch
-    console.log(`TODO: dispatch`);
+    dispatch(ActionCreator.setPlayedFilm(null));
   }
 });
 
 export {FullSizePlayer};
-export default connect(mapStateToProps, mapDispatchToProps)(FullSizePlayer);
+export default connect(() => ({}), mapDispatchToProps)(FullSizePlayer);

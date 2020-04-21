@@ -10,6 +10,7 @@ import FilmDetails from '../film-details/film-details.jsx';
 import FilmReviews from '../film-reviews/film-reviews.jsx';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import {ActionCreator} from '../../actions';
 
 const TabsWrapped = withActiveItem(Tabs, 0);
 const MAX_SIMILAR_FILMS_COUNT = 4;
@@ -28,6 +29,7 @@ class FilmPage extends PureComponent {
       onNameClick,
       onPosterClick,
       onFilmNameClick,
+      onPlayButtonClick,
     } = this.props;
 
     const {
@@ -75,15 +77,17 @@ class FilmPage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button className="btn btn--play movie-card__button" type="button" onClick={() => {
+                    onPlayButtonClick(film);
+                  }}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"></use>
+                      <use xlinkHref="#play-s" />
                     </svg>
                     <span>Play</span>
                   </button>
                   <button className="btn btn--list movie-card__button" type="button">
                     <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
+                      <use xlinkHref="#add" />
                     </svg>
                     <span>My list</span>
                   </button>
@@ -156,6 +160,7 @@ FilmPage.propTypes = {
     released: PropTypes.number.isRequired,
   }).isRequired,
 
+  onPlayButtonClick: PropTypes.func.isRequired,
   onFilmNameClick: PropTypes.func,
   onNameClick: PropTypes.func,
   onPosterClick: PropTypes.func,
@@ -166,5 +171,11 @@ const mapStateToProps = (state) => ({
   films: state.films,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick(film) {
+    dispatch(ActionCreator.setPlayedFilm(film));
+  }
+});
+
 export {FilmPage};
-export default connect(mapStateToProps)(FilmPage);
+export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

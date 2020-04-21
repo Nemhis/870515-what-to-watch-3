@@ -36,7 +36,12 @@ const films = [
 
 it(`Render correctly <FilmDetailInfo>`, () => {
   const tree = renderer
-    .create(<FilmPage films={films} film={film} activeItemIndex={0} onItemSelect={() => {}} />)
+    .create(<FilmPage films={films}
+      film={film}
+      activeItemIndex={0}
+      onItemSelect={() => {}}
+      onPlayButtonClick={() => {}}
+    />)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

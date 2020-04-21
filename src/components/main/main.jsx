@@ -5,6 +5,11 @@ import {connect} from 'react-redux';
 import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
+import FullSizePlayer from '../full-size-player/full-size-player.jsx';
+
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
+
+const FullSizePlayerWrapped = withVideoPlayer(FullSizePlayer);
 
 const Main = ({films}) => {
   return (
@@ -48,13 +53,13 @@ const Main = ({films}) => {
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
+                    <use xlinkHref="#play-s" />
                   </svg>
                   <span>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                    <use xlinkHref="#add" />
                   </svg>
                   <span>My list</span>
                 </button>
@@ -80,10 +85,12 @@ const Main = ({films}) => {
 
 Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  playedFilm: PropTypes.object,
 };
 
-const mapStateToProps = ({shownFilms}) => ({
+const mapStateToProps = ({shownFilms, playedFilm}) => ({
   films: shownFilms,
+  playedFilm,
 });
 
 export {Main};

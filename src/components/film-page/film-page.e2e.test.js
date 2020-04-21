@@ -47,6 +47,7 @@ describe(`<FilmCard> e2e tests`, () => {
           films={films}
           film={film}
           onNameClick={onFilmClick}
+          onPlayButtonClick={() => {}}
           activeItemIndex={0}
           onItemSelect={() => {}}
         />
@@ -67,6 +68,7 @@ describe(`<FilmCard> e2e tests`, () => {
           films={films}
           film={film}
           onPosterClick={onPosterClick}
+          onPlayButtonClick={() => {}}
           activeItemIndex={0}
           onItemSelect={() => {}}
         />
@@ -78,5 +80,26 @@ describe(`<FilmCard> e2e tests`, () => {
       .simulate(`click`);
 
     expect(onPosterClick.mock.calls.length).toBe(1);
+  });
+
+  it(`Play button should be pressed`, () => {
+    const onPlayButtonClick = jest.fn();
+    const filmDetail = shallow(
+        <FilmPage
+          films={films}
+          film={film}
+          onPosterClick={() => {}}
+          onPlayButtonClick={onPlayButtonClick}
+          activeItemIndex={0}
+          onItemSelect={() => {}}
+        />
+    );
+
+    filmDetail
+      .find(`.movie-card__button`)
+      .at(0)
+      .simulate(`click`);
+
+    expect(onPlayButtonClick.mock.calls.length).toBe(1);
   });
 });

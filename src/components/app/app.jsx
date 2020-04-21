@@ -6,6 +6,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import FilmPage from '../film-page/film-page.jsx';
 import FullSizePlayer from '../full-size-player/full-size-player.jsx';
+
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 import {Screen} from '../../const';
@@ -28,13 +29,14 @@ class App extends PureComponent {
   }
 
   render() {
-    const {screen} = this.props;
+    const {screen, playedFilm} = this.props;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp(screen)}
+            {playedFilm && <FullSizePlayerWrapped film={playedFilm} />}
           </Route>
           <Route exact path="/dev-film-detail-info">
             <FilmPage />
@@ -50,10 +52,12 @@ class App extends PureComponent {
 
 App.propTypes = {
   screen: PropTypes.oneOf([Screen.MAIN, Screen.FILM_PAGE]),
+  playedFilm: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  screen: state.screen,
+const mapStateToProps = ({screen, playedFilm}) => ({
+  screen,
+  playedFilm,
 });
 
 export {App};

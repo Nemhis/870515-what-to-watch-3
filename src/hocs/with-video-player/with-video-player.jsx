@@ -31,6 +31,7 @@ const withVideoPlayer = (Component) => {
             isPlaying: false
           });
         }}
+        autoPlay
         width={`100%`}
         height={`100%`}
       />;

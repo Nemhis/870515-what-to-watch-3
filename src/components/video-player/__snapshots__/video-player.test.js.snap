@@ -2,6 +2,7 @@
 
 exports[`Render correctly <VideoPlayer> 1`] = `
 <video
+  autoPlay={false}
   height="100"
   muted={false}
   poster="/picture/src.jpg"

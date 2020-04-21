@@ -8,9 +8,9 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {poster, src, muted, width, height} = this.props;
+    const {poster, src, muted, width, height, autoPlay} = this.props;
 
-    return <video width={width} height={height} poster={poster} src={src} muted={muted} ref={this._videoRef} />;
+    return <video width={width} height={height} poster={poster} src={src} muted={muted} ref={this._videoRef} autoPlay={autoPlay} />;
   }
 
   componentDidMount() {
@@ -50,6 +50,7 @@ VideoPlayer.defaultProps = {
   isFullScreen: false,
   muted: false,
   isStopped: false,
+  autoPlay: false,
 };
 
 VideoPlayer.propTypes = {
@@ -64,6 +65,7 @@ VideoPlayer.propTypes = {
   onEnded: PropTypes.func,
   muted: PropTypes.bool,
   isStopped: PropTypes.bool,
+  autoPlay: PropTypes.bool,
 };
 
 export default VideoPlayer;

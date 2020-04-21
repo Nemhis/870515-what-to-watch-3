@@ -13,6 +13,7 @@ exports[`Render correctly <FilmCard> 1`] = `
       className="small-movie-card__image"
     >
       <video
+        autoPlay={false}
         height="100%"
         muted={true}
         poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
@@ -41,6 +42,7 @@ exports[`Render correctly <FilmCard> 1`] = `
       className="small-movie-card__image"
     >
       <video
+        autoPlay={false}
         height="100%"
         muted={true}
         poster="img/bohemian-rhapsody.jpg"
@@ -69,6 +71,7 @@ exports[`Render correctly <FilmCard> 1`] = `
       className="small-movie-card__image"
     >
       <video
+        autoPlay={false}
         height="100%"
         muted={true}
         poster="img/macbeth.jpg"
@@ -97,6 +100,7 @@ exports[`Render correctly <FilmCard> 1`] = `
       className="small-movie-card__image"
     >
       <video
+        autoPlay={false}
         height="100%"
         muted={true}
         poster="img/aviator.jpg"
