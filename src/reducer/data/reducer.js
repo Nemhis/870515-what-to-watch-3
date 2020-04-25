@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
   }
 
   if (newState) {
-    state = extend(newState);
+    state = extend(state, newState);
   }
 
   return state;
