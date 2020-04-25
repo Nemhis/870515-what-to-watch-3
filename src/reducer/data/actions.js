@@ -2,6 +2,15 @@ const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
 };
 
+const Operation = {
+  loadFilms: () => (dispatch, getState, api) => {
+    return api.get(`/films`)
+      .then(({data}) => {
+        dispatch(ActionCreator.loadFilms(data));
+      });
+  }
+};
+
 const ActionCreator = {
   loadFilms(films) {
     return {
@@ -11,4 +20,4 @@ const ActionCreator = {
   }
 };
 
-export {ActionType, ActionCreator};
+export {ActionType, ActionCreator, Operation};

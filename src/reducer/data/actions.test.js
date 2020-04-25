@@ -1,4 +1,9 @@
-import {ActionType, ActionCreator} from './actions';
+import MockAdapter from 'axios-mock-adapter';
+
+import {ActionType, ActionCreator, Operation} from './actions';
+import {createAPI} from '../../api';
+
+const api = createAPI(() => {});
 
 const films = [
   {
@@ -21,6 +26,25 @@ describe(`Action creators work correctly`, () => {
       .toEqual({
         type: ActionType.LOAD_FILMS,
         payload: films,
+      });
+  });
+
+  it(`Should make a correct API call to /films`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const filmsLoader = Operation.loadFilms();
+
+    apiMock
+      .onGet(`/films`)
+      .reply(200, [{fake: true}]);
+
+    return filmsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FILMS,
+          payload: [{fake: true}]
+        });
       });
   });
 });
