@@ -7,6 +7,10 @@ const Operation = {
     return api.get(`/films`)
       .then(({data}) => {
         dispatch(ActionCreator.loadFilms(data));
+      })
+      .catch((response) => {
+        // TODO: dispatch ошибка загрузки фильмов, необходимо показать ошибку
+        throw response;
       });
   }
 };
