@@ -3,10 +3,6 @@ import {extend} from '../../utils';
 import {Screen} from '../../const';
 
 const initialState = {
-  shownFilms: [],
-  films: [],
-  filmsCount: 0,
-  allFilms: [],
   selectedFilm: null,
   screen: Screen.MAIN,
   selectedGenre: DEFAULT_GENRE_ITEM,
