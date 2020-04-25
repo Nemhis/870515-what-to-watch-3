@@ -1,13 +1,12 @@
 import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
-import films from '../../mocks/films';
 import {extend} from '../../utils';
 import {Screen} from '../../const';
 
 const initialState = {
-  shownFilms: films.slice(0, SHOWN_MOVIES_COUNT),
-  films,
-  filmsCount: films.length,
-  allFilms: films,
+  shownFilms: [],
+  films: [],
+  filmsCount: 0,
+  allFilms: [],
   selectedFilm: null,
   screen: Screen.MAIN,
   selectedGenre: DEFAULT_GENRE_ITEM,
