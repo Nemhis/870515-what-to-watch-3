@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from '../../actions';
+import {ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from '../../reducer/operation/actions';
 import {arrayUnique} from '../../utils';
 
 const MAX_GENRES_COUNT = 9;

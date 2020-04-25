@@ -1,7 +1,7 @@
 import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
-import films from './mocks/films';
-import {extend} from './utils';
-import {Screen} from './const';
+import films from '../../mocks/films';
+import {extend} from '../../utils';
+import {Screen} from '../../const';
 
 const initialState = {
   shownFilms: films.slice(0, SHOWN_MOVIES_COUNT),

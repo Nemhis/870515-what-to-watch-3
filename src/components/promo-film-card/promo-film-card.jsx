@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ActionCreator} from '../../actions';
+import {ActionCreator} from '../../reducer/operation/actions';
 import {connect} from 'react-redux';
 
 const PromoFilmCard = ({film, onPlayButtonClick}) => {

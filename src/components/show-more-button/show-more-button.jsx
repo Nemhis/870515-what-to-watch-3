@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator, SHOWN_MOVIES_COUNT} from '../../actions';
+import {ActionCreator, SHOWN_MOVIES_COUNT} from '../../reducer/operation/actions';
 
 const ShowMoreButton = ({isVisible, onClick, shownMoviesCount}) => {
   return isVisible ?

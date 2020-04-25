@@ -3,7 +3,7 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {GenresList} from './genres-list.jsx';
-import {DEFAULT_GENRE_ITEM} from '../../actions';
+import {DEFAULT_GENRE_ITEM} from '../../reducer/operation/actions';
 
 Enzyme.configure({
   adapter: new Adapter(),

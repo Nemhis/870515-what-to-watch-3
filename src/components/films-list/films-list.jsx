@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import FilmCard from '../film-card/film-card.jsx';
 import withVideoPreview from '../../hocs/with-video-preview/with-video-preview.jsx';
 
-import {ActionCreator} from '../../actions';
+import {ActionCreator} from '../../reducer/operation/actions';
 import {Screen} from '../../const';
 
 const FilmCardWrapped = withVideoPreview(FilmCard);

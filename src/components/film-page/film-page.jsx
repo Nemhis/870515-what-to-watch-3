@@ -10,7 +10,7 @@ import FilmDetails from '../film-details/film-details.jsx';
 import FilmReviews from '../film-reviews/film-reviews.jsx';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {ActionCreator} from '../../actions';
+import {ActionCreator} from '../../reducer/operation/actions';
 
 const TabsWrapped = withActiveItem(Tabs, 0);
 const MAX_SIMILAR_FILMS_COUNT = 4;

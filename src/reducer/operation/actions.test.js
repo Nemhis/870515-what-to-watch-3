@@ -1,5 +1,5 @@
 import {ActionType, ActionCreator} from './actions';
-import {Screen} from './const';
+import {Screen} from '../../const';
 
 describe(`Action creators work correctly`, () => {
   it(`Change filter action return correct value`, () => {

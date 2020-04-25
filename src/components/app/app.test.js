@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 
 import {App} from './app.jsx';
 import {Screen} from '../../const';
-import {DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from '../../actions';
+import {DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from '../../reducer/operation/actions';
 
 const mockStore = configureStore([]);
 

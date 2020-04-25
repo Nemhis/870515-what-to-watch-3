@@ -1,6 +1,6 @@
 import {reducer} from './reducer.js';
 import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
-import {Screen} from './const';
+import {Screen} from '../../const';
 
 const films = [
   {

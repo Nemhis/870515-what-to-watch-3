@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {formatDuration} from '../../utils';
-import {ActionCreator} from '../../actions';
+import {ActionCreator} from '../../reducer/operation/actions';
 
 class FullSizePlayer extends PureComponent {
   _renderPlayButton() {
