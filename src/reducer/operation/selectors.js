@@ -11,6 +11,10 @@ export const getScreen = (state) => state[NameSpace.OPERATION].screen;
 
 export const getSelectedGenre = (state) => state[NameSpace.OPERATION].selectedGenre;
 
+export const getPlayedFilm = (state) => state[NameSpace.OPERATION].playedFilm;
+
+export const getSelectedFilm = (state) => state[NameSpace.OPERATION].selectedFilm;
+
 export const getFilmsByCurrentGenre = createSelector(
     getAllFilms,
     getSelectedGenre,

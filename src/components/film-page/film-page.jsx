@@ -10,7 +10,10 @@ import FilmDetails from '../film-details/film-details.jsx';
 import FilmReviews from '../film-reviews/film-reviews.jsx';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+
 import {ActionCreator} from '../../reducer/operation/actions';
+import {getAllFilms} from '../../reducer/data/selectors';
+import {getSelectedFilm} from '../../reducer/operation/selectors';
 
 const TabsWrapped = withActiveItem(Tabs, 0);
 const MAX_SIMILAR_FILMS_COUNT = 4;
@@ -167,8 +170,8 @@ FilmPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  film: state.selectedFilm,
-  films: state.films,
+  film: getSelectedFilm(state),
+  films: getAllFilms(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

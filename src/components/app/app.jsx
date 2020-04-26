@@ -10,7 +10,7 @@ import FullSizePlayer from '../full-size-player/full-size-player.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 import {Screen} from '../../const';
-import {getScreen} from '../../reducer/operation/selectors';
+import {getScreen, getPlayedFilm} from '../../reducer/operation/selectors';
 
 const FullSizePlayerWrapped = withVideoPlayer(FullSizePlayer);
 
@@ -58,7 +58,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   screen: getScreen(state),
-  // playedFilm: state.playedFilm,
+  playedFilm: getPlayedFilm(state),
 });
 
 export {App};
