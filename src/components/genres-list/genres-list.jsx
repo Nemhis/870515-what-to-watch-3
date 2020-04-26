@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from '../../reducer/operation/actions';
+import {ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
 import {arrayUnique} from '../../utils';
-
-const MAX_GENRES_COUNT = 9;
+import {getGenresListByFilms, getSelectedGenre} from '../../reducer/operation/selectors';
 
 const GenresList = ({genres, onSelectGenre, selectedGenre}) => (
   <ul className="catalog__genres-list">
@@ -30,28 +29,15 @@ GenresList.propTypes = {
   selectedGenre: PropTypes.string.isRequired,
 };
 
-const getGenresByFilms = (films) => {
-  let genres = films.map((film) => film.genre);
-  genres = arrayUnique(genres);
-  genres = genres.slice(0, MAX_GENRES_COUNT);
-  genres.unshift(DEFAULT_GENRE_ITEM);
-
-  return genres;
-};
-
-const mapStateToProps = ({allFilms, selectedGenre}) => {
-  const genres = getGenresByFilms(allFilms);
-
-  return {
-    genres,
-    selectedGenre,
-  };
-};
+const mapStateToProps = (state) => ({
+  genres: getGenresListByFilms(state),
+  selectedGenre: getSelectedGenre(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSelectGenre(selectedGenre) {
     dispatch(ActionCreator.changeGenreFilter(selectedGenre));
-    dispatch(ActionCreator.changeShownFilmsCount(SHOWN_MOVIES_COUNT));
+    dispatch(ActionCreator.changeShownFilmsCount(SHOWN_FILMS_COUNT));
     dispatch(ActionCreator.applyGenreFilter(selectedGenre));
   },
 });

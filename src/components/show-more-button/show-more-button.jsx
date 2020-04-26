@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator, SHOWN_MOVIES_COUNT} from '../../reducer/operation/actions';
+import {ActionCreator, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
+import {getFilteredFilmsCount, getShownFilms} from '../../reducer/data/selectors';
+import {getShownFilmsCount} from '../../reducer/operation/selectors';
 
 const ShowMoreButton = ({isVisible, onClick, shownMoviesCount}) => {
   return isVisible ?
     <div className="catalog__more">
       <button className="catalog__button" type="button" onClick={() => {
-        onClick(shownMoviesCount + SHOWN_MOVIES_COUNT);
+        onClick(shownMoviesCount + SHOWN_FILMS_COUNT);
       }}>Show more</button>
     </div>
     :
@@ -21,9 +23,9 @@ ShowMoreButton.propTypes = {
   shownMoviesCount: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({filmsCount, shownFilms, shownMoviesCount}) => ({
-  isVisible: filmsCount > shownFilms.length,
-  shownMoviesCount,
+const mapStateToProps = (state) => ({
+  isVisible: getFilteredFilmsCount(state) > getShownFilms(state).length,
+  shownMoviesCount: getShownFilmsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

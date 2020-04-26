@@ -1,7 +1,7 @@
 import {reducer} from './reducer.js';
 import {ActionType} from './actions';
 
-import {SHOWN_MOVIES_COUNT} from '../operation/actions';
+import {SHOWN_FILMS_COUNT} from '../operation/actions';
 
 const films = [
   {
@@ -116,7 +116,7 @@ describe(`Reducer tests`, () => {
       .toEqual({
         films,
         allFilms: films,
-        shownFilms: films.slice(0, SHOWN_MOVIES_COUNT),
+        shownFilms: films.slice(0, SHOWN_FILMS_COUNT),
         filmsCount: films.length,
       });
   });

@@ -6,11 +6,12 @@ import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import PromoFilmCard from '../promo-film-card/promo-film-card.jsx';
+import {getPromoFilm, getShownFilms} from '../../reducer/data/selectors';
 
-const Main = ({films}) => {
+const Main = ({films, promoFilm}) => {
   return (
     <React.Fragment>
-      <PromoFilmCard film={films[0]}/>
+      {promoFilm && <PromoFilmCard film={promoFilm}/> }
 
       <div className="page-content">
         <section className="catalog">
@@ -29,10 +30,12 @@ const Main = ({films}) => {
 
 Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  promoFilm: PropTypes.object,
 };
 
-const mapStateToProps = ({shownFilms}) => ({
-  films: shownFilms,
+const mapStateToProps = (state) => ({
+  films: getShownFilms(state),
+  promoFilm: getPromoFilm(state),
 });
 
 export {Main};

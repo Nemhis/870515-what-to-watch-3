@@ -1,5 +1,5 @@
 const DEFAULT_GENRE_ITEM = `All genres`;
-const SHOWN_MOVIES_COUNT = 8;
+const SHOWN_FILMS_COUNT = 8;
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
@@ -61,4 +61,4 @@ const ActionCreator = {
   },
 };
 
-export {ActionType, ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT};
+export {ActionType, ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT};

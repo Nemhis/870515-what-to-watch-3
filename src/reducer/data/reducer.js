@@ -1,7 +1,7 @@
 import {extend} from '../../utils';
 
 import {ActionType} from './actions';
-import {SHOWN_MOVIES_COUNT} from '../operation/actions';
+import {SHOWN_FILMS_COUNT} from '../operation/actions';
 
 const initialState = {
   films: [],
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
       newState = {
         films: action.payload,
         allFilms: action.payload,
-        shownFilms: action.payload.slice(0, SHOWN_MOVIES_COUNT),
+        shownFilms: action.payload.slice(0, SHOWN_FILMS_COUNT),
         filmsCount: action.payload.length,
       };
       break;

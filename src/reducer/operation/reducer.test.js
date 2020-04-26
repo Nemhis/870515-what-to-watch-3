@@ -1,5 +1,5 @@
 import {reducer} from './reducer.js';
-import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
+import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT} from './actions';
 import {Screen} from '../../const';
 
 describe(`Reducer tests`, () => {
@@ -9,7 +9,7 @@ describe(`Reducer tests`, () => {
         selectedFilm: null,
         screen: Screen.MAIN,
         selectedGenre: DEFAULT_GENRE_ITEM,
-        shownMoviesCount: SHOWN_MOVIES_COUNT,
+        shownMoviesCount: SHOWN_FILMS_COUNT,
         playedFilm: null,
       });
   });

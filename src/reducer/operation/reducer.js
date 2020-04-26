@@ -1,4 +1,4 @@
-import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_MOVIES_COUNT} from './actions';
+import {ActionType, DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT} from './actions';
 import {extend} from '../../utils';
 import {Screen} from '../../const';
 
@@ -6,7 +6,7 @@ const initialState = {
   selectedFilm: null,
   screen: Screen.MAIN,
   selectedGenre: DEFAULT_GENRE_ITEM,
-  shownMoviesCount: SHOWN_MOVIES_COUNT,
+  shownFilmsCount: SHOWN_FILMS_COUNT,
   playedFilm: null,
 };
 
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
       newState = {
         films: filteredFilms,
         filmsCount: filteredFilms.length,
-        shownFilms: filteredFilms.slice(0, SHOWN_MOVIES_COUNT),
+        shownFilms: filteredFilms.slice(0, SHOWN_FILMS_COUNT),
       };
       break;
     case ActionType.SELECT_FILM:
