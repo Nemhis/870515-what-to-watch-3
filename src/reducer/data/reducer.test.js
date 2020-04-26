@@ -111,10 +111,7 @@ describe(`Reducer tests`, () => {
       payload: films,
     }))
       .toEqual({
-        films,
         allFilms: films,
-        shownFilms: films.slice(0, SHOWN_FILMS_COUNT),
-        filmsCount: films.length,
       });
   });
 });

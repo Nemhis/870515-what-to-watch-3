@@ -8,7 +8,6 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then(({data}) => {
-        data = data.map((film) => Film.fromRaw(film));
         dispatch(ActionCreator.loadFilms(data));
       })
       .catch((response) => {
@@ -20,6 +19,8 @@ const Operation = {
 
 const ActionCreator = {
   loadFilms(films) {
+    films = films.map((film) => Film.fromRaw(film));
+
     return {
       type: ActionType.LOAD_FILMS,
       payload: films,
