@@ -19,7 +19,7 @@ const film = {
 it(`<PromoFilmCard> should call onPlayButtonClick`, () => {
   const onPlayButtonClick = jest.fn();
   const promoFilmCardWrapper = shallow(
-      <PromoFilmCard film={film} onPlayButtonClick={onPlayButtonClick} />
+      <PromoFilmCard film={film} onPlayButtonClick={onPlayButtonClick}> <div>children</div> </PromoFilmCard>
   );
 
   promoFilmCardWrapper

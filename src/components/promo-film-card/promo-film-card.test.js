@@ -13,7 +13,7 @@ const film = {
 
 it(`Render correctly <PromoFilmCard>`, () => {
   const shallowRenderer = new ShallowRenderer();
-  const tree = shallowRenderer.render(<PromoFilmCard film={film} onPlayButtonClick={() => {}} />);
+  const tree = shallowRenderer.render(<PromoFilmCard film={film} onPlayButtonClick={() => {}}> <div>children</div> </PromoFilmCard>);
 
   expect(tree).toMatchSnapshot();
 });

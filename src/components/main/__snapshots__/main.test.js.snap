@@ -2,6 +2,11 @@
 
 exports[`Render correctly <Main> 1`] = `
 <React.Fragment>
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>
   <div
     className="page-content"
   >

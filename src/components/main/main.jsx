@@ -6,13 +6,17 @@ import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import PromoFilmCard from '../promo-film-card/promo-film-card.jsx';
+import Header from '../header/header.jsx';
+
 import {getPromoFilm} from '../../reducer/data/selectors';
 import {getShownFilms} from '../../reducer/operation/selectors';
 
 const Main = ({films, promoFilm}) => {
   return (
     <React.Fragment>
-      {promoFilm && <PromoFilmCard film={promoFilm}/> }
+      <h1 className="visually-hidden">WTW</h1>
+
+      {promoFilm && <PromoFilmCard film={promoFilm}> <Header /> </PromoFilmCard> }
 
       <div className="page-content">
         <section className="catalog">
