@@ -9,7 +9,7 @@ describe(`Reducer tests`, () => {
         selectedFilm: null,
         screen: Screen.MAIN,
         selectedGenre: DEFAULT_GENRE_ITEM,
-        shownMoviesCount: SHOWN_FILMS_COUNT,
+        shownFilmsCount: SHOWN_FILMS_COUNT,
         playedFilm: null,
       });
   });
@@ -57,19 +57,6 @@ describe(`Reducer tests`, () => {
       payload: 20
     })).toEqual({
       shownFilmsCount: 20,
-    });
-  });
-
-  it(`Reducer should slice films by shown count`, () => {
-    expect(reducer({
-      films: [1, 2, 3, 4],
-      shownFilmsCount: 2
-    }, {
-      type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
-    })).toEqual({
-      films: [1, 2, 3, 4],
-      shownFilms: [1, 2],
-      shownFilmsCount: 2,
     });
   });
 
