@@ -1,8 +1,6 @@
 import {reducer} from './reducer.js';
 import {ActionType} from './actions';
 
-import {SHOWN_FILMS_COUNT} from '../operation/actions';
-
 const films = [
   {
     id: 1,
@@ -102,16 +100,31 @@ describe(`Reducer tests`, () => {
     expect(reducer(void 0, {}))
       .toEqual({
         allFilms: [],
+        promoFilm: null,
       });
   });
 
   it(`Load films correctly work`, () => {
-    expect(reducer(void 0, {
+    expect(reducer({
+      allFilms: [],
+    }, {
       type: ActionType.LOAD_FILMS,
       payload: films,
     }))
       .toEqual({
         allFilms: films,
+      });
+  });
+
+  it(`Load promo film correctly work`, () => {
+    expect(reducer({
+      promoFilm: null
+    }, {
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: {id: 1},
+    }))
+      .toEqual({
+        promoFilm: {id: 1},
       });
   });
 });

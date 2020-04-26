@@ -73,4 +73,31 @@ describe(`Action creators work correctly`, () => {
         });
       });
   });
+
+  it(`Load films action return correct value`, () => {
+    expect(ActionCreator.loadPromoFilm(filmsRaw[0]))
+      .toEqual({
+        type: ActionType.LOAD_PROMO_FILM,
+        payload: films[0],
+      });
+  });
+
+  it(`Should make a correct API call to /films/promo`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const filmsLoader = Operation.loadPromoFilm();
+
+    apiMock
+      .onGet(`/films/promo`)
+      .reply(200, filmsRaw[0]);
+
+    return filmsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_PROMO_FILM,
+          payload: films[0]
+        });
+      });
+  });
 });
