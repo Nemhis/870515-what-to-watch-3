@@ -3,11 +3,9 @@ const SHOWN_FILMS_COUNT = 8;
 
 const ActionType = {
   CHANGE_GENRE_FILTER: `CHANGE_GENRE_FILTER`,
-  APPLY_GENRE_FILTER: `APPLY_GENRE_FILTER`,
   SELECT_FILM: `SELECT_FILM`,
   CHANGE_SCREEN: `CHANGE_SCREEN`,
   CHANGE_SHOWN_FILMS_COUNT: `CHANGE_SHOWN_FILMS_COUNT`,
-  SLICE_FILMS_BY_SHOWN_COUNT: `SLICE_FILMS_BY_SHOWN_COUNT`,
   SET_PLAYED_FILM: `SET_PLAYED_FILM`,
 };
 
@@ -15,13 +13,6 @@ const ActionCreator = {
   changeGenreFilter(genre) {
     return ({
       type: ActionType.CHANGE_GENRE_FILTER,
-      payload: genre,
-    });
-  },
-
-  applyGenreFilter(genre) {
-    return ({
-      type: ActionType.APPLY_GENRE_FILTER,
       payload: genre,
     });
   },
@@ -44,12 +35,6 @@ const ActionCreator = {
     return ({
       type: ActionType.CHANGE_SHOWN_FILMS_COUNT,
       payload: count,
-    });
-  },
-
-  sliceFilmsByShownCount() {
-    return ({
-      type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
     });
   },
 

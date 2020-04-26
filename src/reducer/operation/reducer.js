@@ -17,19 +17,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_GENRE_FILTER:
       newState = {selectedGenre: action.payload};
       break;
-    case ActionType.APPLY_GENRE_FILTER:
-      let filteredFilms = state.allFilms;
-
-      if (action.payload !== DEFAULT_GENRE_ITEM) {
-        filteredFilms = filteredFilms.filter((film) => film.genre === action.payload);
-      }
-
-      newState = {
-        films: filteredFilms,
-        filmsCount: filteredFilms.length,
-        shownFilms: filteredFilms.slice(0, SHOWN_FILMS_COUNT),
-      };
-      break;
     case ActionType.SELECT_FILM:
       newState = {selectedFilm: action.payload};
       break;
@@ -37,12 +24,7 @@ const reducer = (state = initialState, action) => {
       newState = {screen: action.payload};
       break;
     case ActionType.CHANGE_SHOWN_FILMS_COUNT:
-      newState = {shownMoviesCount: action.payload};
-      break;
-    case ActionType.SLICE_FILMS_BY_SHOWN_COUNT:
-      newState = {
-        shownFilms: state.films.slice(0, state.shownMoviesCount)
-      };
+      newState = {shownFilmsCount: action.payload};
       break;
     case ActionType.SET_PLAYED_FILM:
       newState = {

@@ -101,10 +101,7 @@ describe(`Reducer tests`, () => {
   it(`Default store state`, () => {
     expect(reducer(void 0, {}))
       .toEqual({
-        films: [],
         allFilms: [],
-        shownFilms: [],
-        filmsCount: 0,
       });
   });
 

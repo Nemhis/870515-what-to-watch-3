@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator, DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
-import {arrayUnique} from '../../utils';
+import {ActionCreator, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
 import {getGenresListByFilms, getSelectedGenre} from '../../reducer/operation/selectors';
 
 const GenresList = ({genres, onSelectGenre, selectedGenre}) => (
@@ -38,7 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
   onSelectGenre(selectedGenre) {
     dispatch(ActionCreator.changeGenreFilter(selectedGenre));
     dispatch(ActionCreator.changeShownFilmsCount(SHOWN_FILMS_COUNT));
-    dispatch(ActionCreator.applyGenreFilter(selectedGenre));
   },
 });
 

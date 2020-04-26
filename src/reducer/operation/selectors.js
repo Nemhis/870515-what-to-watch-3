@@ -11,7 +11,33 @@ export const getScreen = (state) => state[NameSpace.OPERATION].screen;
 
 export const getSelectedGenre = (state) => state[NameSpace.OPERATION].selectedGenre;
 
+export const getFilmsByCurrentGenre = createSelector(
+    getAllFilms,
+    getSelectedGenre,
+    (films, genre) => {
+      let filteredFilms = films;
+
+      if (genre !== DEFAULT_GENRE_ITEM) {
+        filteredFilms = filteredFilms.filter((film) => film.genre === genre);
+      }
+
+      return filteredFilms;
+    }
+);
+
 export const getShownFilmsCount = (state) => state[NameSpace.OPERATION].shownFilmsCount;
+
+export const getShownFilms = createSelector(
+    getFilmsByCurrentGenre,
+    getShownFilmsCount,
+    (films, count) => films.slice(0, count)
+);
+
+export const getFilteredFilmsCount = createSelector(
+    getFilmsByCurrentGenre,
+    (films) => films.length
+);
+
 
 export const getGenresListByFilms = createSelector(
     getAllFilms,

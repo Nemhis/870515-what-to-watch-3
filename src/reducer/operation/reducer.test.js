@@ -27,61 +27,6 @@ describe(`Reducer tests`, () => {
     });
   });
 
-  it(`Reducer should apply genre filter`, () => {
-    expect(reducer({
-      allFilms: [
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 2`},
-      ],
-    }, {
-      type: ActionType.APPLY_GENRE_FILTER,
-      payload: `genre 1`
-    })).toEqual({
-      allFilms: [
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 2`},
-      ],
-      films: [
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-      ],
-      filmsCount: 9,
-      shownFilms: [
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-        {genre: `genre 1`},
-      ],
-    });
-  });
-
   it(`Reducer should select film`, () => {
     const film = {id: 1};
 
@@ -106,25 +51,25 @@ describe(`Reducer tests`, () => {
 
   it(`Reducer should change shown films count`, () => {
     expect(reducer({
-      shownMoviesCount: 10
+      shownFilmsCount: 10
     }, {
       type: ActionType.CHANGE_SHOWN_FILMS_COUNT,
       payload: 20
     })).toEqual({
-      shownMoviesCount: 20,
+      shownFilmsCount: 20,
     });
   });
 
   it(`Reducer should slice films by shown count`, () => {
     expect(reducer({
       films: [1, 2, 3, 4],
-      shownMoviesCount: 2
+      shownFilmsCount: 2
     }, {
       type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
     })).toEqual({
       films: [1, 2, 3, 4],
       shownFilms: [1, 2],
-      shownMoviesCount: 2,
+      shownFilmsCount: 2,
     });
   });
 

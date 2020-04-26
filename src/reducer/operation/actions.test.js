@@ -10,14 +10,6 @@ describe(`Action creators work correctly`, () => {
       });
   });
 
-  it(`Apply genre filter action return correct value`, () => {
-    expect(ActionCreator.applyGenreFilter(`test genre`))
-      .toEqual({
-        type: ActionType.APPLY_GENRE_FILTER,
-        payload: `test genre`,
-      });
-  });
-
   it(`Select film action return correct value`, () => {
     const film = {id: 1};
 
@@ -41,13 +33,6 @@ describe(`Action creators work correctly`, () => {
       .toEqual({
         type: ActionType.CHANGE_SHOWN_FILMS_COUNT,
         payload: 10,
-      });
-  });
-
-  it(`Slice films by shown count action return correct value`, () => {
-    expect(ActionCreator.sliceFilmsByShownCount())
-      .toEqual({
-        type: ActionType.SLICE_FILMS_BY_SHOWN_COUNT,
       });
   });
 

@@ -6,7 +6,8 @@ import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import PromoFilmCard from '../promo-film-card/promo-film-card.jsx';
-import {getPromoFilm, getShownFilms} from '../../reducer/data/selectors';
+import {getPromoFilm} from '../../reducer/data/selectors';
+import {getShownFilms} from '../../reducer/operation/selectors';
 
 const Main = ({films, promoFilm}) => {
   return (

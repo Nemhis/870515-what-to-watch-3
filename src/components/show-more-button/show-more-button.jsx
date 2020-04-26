@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {ActionCreator, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
-import {getFilteredFilmsCount, getShownFilms} from '../../reducer/data/selectors';
-import {getShownFilmsCount} from '../../reducer/operation/selectors';
+import {getFilteredFilmsCount, getShownFilms, getShownFilmsCount} from '../../reducer/operation/selectors';
 
 const ShowMoreButton = ({isVisible, onClick, shownMoviesCount}) => {
   return isVisible ?
@@ -31,7 +30,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onClick(shownMoviesCount) {
     dispatch(ActionCreator.changeShownFilmsCount(shownMoviesCount));
-    dispatch(ActionCreator.sliceFilmsByShownCount());
   }
 });
 
