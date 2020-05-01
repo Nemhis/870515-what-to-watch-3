@@ -9,7 +9,8 @@ import reducer from './reducer/reducer';
 import {createAPI} from './api';
 import {ActionCreator} from './reducer/user/actions';
 import {AuthorizationStatus} from './const';
-import {Operation} from './reducer/data/actions';
+import {Operation as DataOperations} from './reducer/data/actions';
+import {Operation as UserOperations} from './reducer/user/actions';
 
 const api = createAPI(() => {
   store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
@@ -20,8 +21,9 @@ const store = createStore(
     compose(applyMiddleware(thunk.withExtraArgument(api)), devTools)
 );
 
-store.dispatch(Operation.loadFilms());
-store.dispatch(Operation.loadPromoFilm());
+store.dispatch(DataOperations.loadFilms());
+store.dispatch(DataOperations.loadPromoFilm());
+store.dispatch(UserOperations.checkAuth());
 
 ReactDom.render(
     <Provider store={store}>
