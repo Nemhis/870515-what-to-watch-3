@@ -49,7 +49,11 @@ const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
               }
 
               <div className="sign-in__fields">
-                <div className="sign-in__field">
+                <div className={
+                  errors.email && touched.email
+                    ? `sign-in__field sign-in__field--error`
+                    : `sign-in__field`
+                }>
                   <Field
                     className="sign-in__input"
                     type="email"
@@ -60,7 +64,11 @@ const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
                   <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
                 </div>
 
-                <div className="sign-in__field">
+                <div className={
+                  errors.password && touched.password
+                    ? `sign-in__field sign-in__field--error`
+                    : `sign-in__field`
+                }>
                   <Field
                     className="sign-in__input"
                     type="password"
