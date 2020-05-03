@@ -57,7 +57,7 @@ class FilmPage extends PureComponent {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <Header>
+            <Header additionalClass={`movie-card__head`}>
               <UserInfo />
             </Header>
 

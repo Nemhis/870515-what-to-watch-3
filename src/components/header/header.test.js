@@ -8,7 +8,7 @@ const children = <div>This is children</div>;
 describe(`Render correctly <Header>`, () => {
   it(`<Header> correctly render with children`, () => {
     const tree = renderer
-      .create(<Header>{children}</Header>)
+      .create(<Header additionalClass={`test_class`}>{children}</Header>)
       .toJSON(`test`);
 
     expect(tree).toMatchSnapshot();

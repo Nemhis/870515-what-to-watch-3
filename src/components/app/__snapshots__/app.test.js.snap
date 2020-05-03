@@ -18,7 +18,6 @@ Array [
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
-     
     <header
       className="page-header movie-card__head"
     >
@@ -57,7 +56,6 @@ Array [
         </a>
       </div>
     </header>
-     
     <div
       className="movie-card__wrap"
     >

@@ -2,7 +2,7 @@
 
 exports[`Render correctly <Header> <Header> correctly render with children 1`] = `
 <header
-  className="page-header movie-card__head"
+  className="page-header test_class"
 >
   <div
     className="logo"

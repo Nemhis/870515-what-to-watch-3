@@ -19,7 +19,7 @@ const Main = ({films, promoFilm}) => {
 
       {promoFilm &&
         <PromoFilmCard film={promoFilm}>
-          <Header>
+          <Header additionalClass={`movie-card__head`}>
             <UserInfo />
           </Header>
         </PromoFilmCard>
