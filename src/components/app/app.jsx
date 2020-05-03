@@ -9,11 +9,13 @@ import FullSizePlayer from '../full-size-player/full-size-player.jsx';
 import SignInPage from '../sign-in-page/sign-in-page.jsx';
 
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
+import withErrorMessage from '../../hocs/with-error-message/with-error-message.jsx';
 
 import {Screen} from '../../const';
 import {getScreen, getPlayedFilm} from '../../reducer/operation/selectors';
 
 const FullSizePlayerWrapped = withVideoPlayer(FullSizePlayer);
+const SignInPageWrapped = withErrorMessage(SignInPage);
 
 class App extends PureComponent {
   _renderApp(screen) {
@@ -47,7 +49,7 @@ class App extends PureComponent {
             <FullSizePlayerWrapped />
           </Route>
           <Route exact path="/sign-in-page">
-            <SignInPage />
+            <SignInPageWrapped onSubmit={() => Promise.reject(`Test error`)}/>
           </Route>
         </Switch>
       </BrowserRouter>

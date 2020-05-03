@@ -26,12 +26,9 @@ const SignInPage = ({setErrorMessage, unsetErrorMessage, errorMessage, onSubmit}
           initialValues={{email: ``, password: ``}}
           validationSchema={ValidationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            onSubmit()
-              .then(() => setSubmitting(false))
-              .catch((e) => {
-                setErrorMessage(e);
-                setSubmitting(false);
-              });
+            onSubmit(values)
+              .catch((e) => setErrorMessage(e))
+              .finally(() => setSubmitting(false));
           }}
         >
           {({
@@ -40,7 +37,7 @@ const SignInPage = ({setErrorMessage, unsetErrorMessage, errorMessage, onSubmit}
             isSubmitting,
           }) =>(
             <Form className="sign-in__form" noValidate>
-              {Object.keys(errors).length !== 0 &&
+              {(Object.keys(errors).length !== 0 || errorMessage) &&
                 <div className="sign-in__message">
                   {errors.email && touched.email && <p>{errors.email}</p>}
                   {errors.password && touched.password && <p>{errors.password}</p>}
@@ -107,10 +104,7 @@ const SignInPage = ({setErrorMessage, unsetErrorMessage, errorMessage, onSubmit}
 };
 
 SignInPage.propTypes = {
-  onSubmit: PropTypes.shape({
-    then: PropTypes.func.isRequired,
-    catch: PropTypes.func.isRequired,
-  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
   setErrorMessage: PropTypes.func.isRequired,
   unsetErrorMessage: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
