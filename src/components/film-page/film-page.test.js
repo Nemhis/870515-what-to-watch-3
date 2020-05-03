@@ -42,6 +42,7 @@ it(`Render correctly <FilmDetailInfo>`, () => {
       activeItemIndex={0}
       onItemSelect={() => {}}
       onPlayButtonClick={() => {}}
+      onReviewPageMount={() => {}}
     />);
 
   expect(tree).toMatchSnapshot();

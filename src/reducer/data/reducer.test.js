@@ -101,6 +101,7 @@ describe(`Reducer tests`, () => {
       .toEqual({
         allFilms: [],
         promoFilm: null,
+        comments: {},
       });
   });
 

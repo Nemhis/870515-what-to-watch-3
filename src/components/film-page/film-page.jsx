@@ -16,6 +16,7 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {ActionCreator} from '../../reducer/operation/actions';
 import {getAllFilms} from '../../reducer/data/selectors';
 import {getSelectedFilm} from '../../reducer/operation/selectors';
+import {Operation} from '../../reducer/data/actions';
 
 const TabsWrapped = withActiveItem(Tabs, 0);
 const MAX_SIMILAR_FILMS_COUNT = 4;
@@ -31,6 +32,7 @@ class FilmPage extends PureComponent {
   render() {
     const {
       film,
+      onReviewPageMount,
       onNameClick,
       onPosterClick,
       onFilmNameClick,
@@ -101,7 +103,9 @@ class FilmPage extends PureComponent {
                 <TabsWrapped>
                   <Tab name={`Overview`}> <FilmOverview film={film}/> </Tab>
                   <Tab name={`Details`}> <FilmDetails film={film}/> </Tab>
-                  <Tab name={`Reviews`}> <FilmReviews /> </Tab>
+                  <Tab name={`Reviews`}>
+                    <FilmReviews onMount={() => onReviewPageMount(film)} />
+                  </Tab>
                 </TabsWrapped>
               </div>
             </div>
@@ -154,6 +158,7 @@ FilmPage.propTypes = {
   }).isRequired,
 
   onPlayButtonClick: PropTypes.func.isRequired,
+  onReviewPageMount: PropTypes.func.isRequired,
   onFilmNameClick: PropTypes.func,
   onNameClick: PropTypes.func,
   onPosterClick: PropTypes.func,
@@ -167,6 +172,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonClick(film) {
     dispatch(ActionCreator.setPlayedFilm(film));
+  },
+
+  onReviewPageMount(film) {
+    dispatch(Operation.loadComments(film.id));
   }
 });
 

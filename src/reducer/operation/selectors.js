@@ -3,7 +3,7 @@ import {createSelector} from 'reselect';
 import NameSpace from '../name-space';
 import {arrayUnique} from '../../utils';
 import {DEFAULT_GENRE_ITEM} from './actions';
-import {getAllFilms} from '../data/selectors';
+import {getAllFilms, getComments} from '../data/selectors';
 
 const MAX_GENRES_COUNT = 9;
 
@@ -14,6 +14,12 @@ export const getSelectedGenre = (state) => state[NameSpace.OPERATION].selectedGe
 export const getPlayedFilm = (state) => state[NameSpace.OPERATION].playedFilm;
 
 export const getSelectedFilm = (state) => state[NameSpace.OPERATION].selectedFilm;
+
+export const getCommentsForSelectedFilm = createSelector(
+    getSelectedFilm,
+    getComments,
+    (film, comments) => comments[film.id] || []
+);
 
 export const getFilmsByCurrentGenre = createSelector(
     getAllFilms,

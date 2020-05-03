@@ -1,8 +1,10 @@
 import Film from '../../adapter/film';
+import Comment from '../../adapter/comment';
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`,
 };
 
 const Operation = {
@@ -12,7 +14,6 @@ const Operation = {
         dispatch(ActionCreator.loadFilms(data));
       })
       .catch((response) => {
-        // TODO: dispatch ошибка загрузки фильмов, необходимо показать ошибку
         throw response;
       });
   },
@@ -23,7 +24,16 @@ const Operation = {
         dispatch(ActionCreator.loadPromoFilm(data));
       })
       .catch((response) => {
-        // TODO: dispatch ошибка загрузки фильмов, необходимо показать ошибку
+        throw response;
+      });
+  },
+
+  loadComments: (filmId) => (dispatch, getState, api) => {
+    return api.get(`/comments/${filmId}`)
+      .then(({data}) => {
+        dispatch(ActionCreator.loadComments(filmId, data));
+      })
+      .catch((response) => {
         throw response;
       });
   }
@@ -43,6 +53,18 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_PROMO_FILM,
       payload: Film.fromRaw(film),
+    };
+  },
+
+  loadComments(filmId, comments) {
+    comments = comments.map((comment) => Comment.fromRaw(comment));
+
+    return {
+      type: ActionType.LOAD_COMMENTS,
+      payload: {
+        filmId,
+        comments,
+      },
     };
   },
 };

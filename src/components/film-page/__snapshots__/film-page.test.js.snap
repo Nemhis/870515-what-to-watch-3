@@ -194,9 +194,9 @@ exports[`Render correctly <FilmDetailInfo> 1`] = `
             <Tab
               name="Reviews"
             >
-               
-              <FilmReviews />
-               
+              <Memo(Connect(FilmReviews))
+                onMount={[Function]}
+              />
             </Tab>
           </WithVideoPreview>
         </div>

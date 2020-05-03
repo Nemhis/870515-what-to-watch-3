@@ -50,6 +50,7 @@ describe(`<FilmCard> e2e tests`, () => {
           onPlayButtonClick={() => {}}
           activeItemIndex={0}
           onItemSelect={() => {}}
+          onReviewPageMount={() => {}}
         />
     );
 
@@ -71,6 +72,7 @@ describe(`<FilmCard> e2e tests`, () => {
           onPlayButtonClick={() => {}}
           activeItemIndex={0}
           onItemSelect={() => {}}
+          onReviewPageMount={() => {}}
         />
     );
 
@@ -92,6 +94,7 @@ describe(`<FilmCard> e2e tests`, () => {
           onPlayButtonClick={onPlayButtonClick}
           activeItemIndex={0}
           onItemSelect={() => {}}
+          onReviewPageMount={() => {}}
         />
     );
 

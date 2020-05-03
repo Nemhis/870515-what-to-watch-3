@@ -5,6 +5,7 @@ import {ActionType} from './actions';
 const initialState = {
   allFilms: [],
   promoFilm: null,
+  comments: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,12 @@ const reducer = (state = initialState, action) => {
       newState = {
         promoFilm: action.payload,
       };
+      break;
+    case ActionType.LOAD_COMMENTS:
+      newState = {
+        comments: {},
+      };
+      newState.comments[action.payload.filmId] = action.payload.comments;
       break;
   }
 
