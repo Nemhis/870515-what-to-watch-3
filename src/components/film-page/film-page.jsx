@@ -9,6 +9,7 @@ import FilmOverview from '../film-overview/film-overview.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import FilmReviews from '../film-reviews/film-reviews.jsx';
 import Header from '../header/header.jsx';
+import UserInfo from '../user-info/user-info.jsx';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
@@ -56,7 +57,9 @@ class FilmPage extends PureComponent {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <Header />
+            <Header>
+              <UserInfo />
+            </Header>
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">

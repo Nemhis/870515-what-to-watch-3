@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render correctly <UserInfo> <UserInfo> correctly render with no user 1`] = `
+<div
+  className="user-block"
+>
+  <a
+    className="user-block__link"
+    href="/sign-in-page"
+  >
+    Sign in
+  </a>
+</div>
+`;
+
+exports[`Render correctly <UserInfo> <UserInfo> correctly render with user 1`] = `
+<div
+  className="user-block"
+>
+  <div
+    className="user-block__avatar"
+  >
+    <img
+      alt="User avatar"
+      height="63"
+      src="test/url.png"
+      width="63"
+    />
+  </div>
+</div>
+`;
