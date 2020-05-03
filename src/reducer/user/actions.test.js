@@ -3,6 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {ActionType, ActionCreator, Operation} from './actions';
 import {AuthorizationStatus} from '../../const';
 import {createAPI} from '../../api';
+import User from '../../adapter/user';
 
 const api = createAPI(() => {});
 
@@ -20,6 +21,14 @@ describe(`Action creators work correctly`, () => {
       .toEqual({
         type: ActionType.REQUIRE_AUTHORIZATION,
         payload: AuthorizationStatus.NO_AUTH,
+      });
+  });
+
+  it(`Load user info correctly change data`, () => {
+    expect(ActionCreator.loadUserInfo({id: 1, email: `test@mail.ru`}))
+      .toEqual({
+        type: ActionType.LOAD_USER_INFO,
+        payload: {id: 1, email: `test@mail.ru`},
       });
   });
 
@@ -63,14 +72,18 @@ describe(`Action creators work correctly`, () => {
 
     apiMock
       .onPost(`/login`)
-      .reply(200, true);
+      .reply(200, {id: 1, email: `test@mail.ru`});
 
     return checkAuthLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REQUIRE_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.LOAD_USER_INFO,
+          payload: new User({id: 1, email: `test@mail.ru`}),
         });
       });
   });

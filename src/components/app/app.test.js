@@ -52,7 +52,7 @@ it(`Render correctly <App>`, () => {
   });
 
   const tree = renderer
-    .create(<Provider store={store}><App screen={Screen.MAIN}/></Provider>, options)
+    .create(<Provider store={store}><App screen={Screen.MAIN} login={() => {}}/></Provider>, options)
     .toJSON(`test`);
 
   expect(tree).toMatchSnapshot();

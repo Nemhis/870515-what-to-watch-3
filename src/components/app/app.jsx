@@ -13,6 +13,7 @@ import withErrorMessage from '../../hocs/with-error-message/with-error-message.j
 
 import {Screen} from '../../const';
 import {getScreen, getPlayedFilm} from '../../reducer/operation/selectors';
+import {Operation as UserOperation} from '../../reducer/user/actions';
 
 const FullSizePlayerWrapped = withVideoPlayer(FullSizePlayer);
 const SignInPageWrapped = withErrorMessage(SignInPage);
@@ -33,7 +34,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {screen, playedFilm} = this.props;
+    const {screen, playedFilm, login} = this.props;
 
     return (
       <BrowserRouter>
@@ -49,7 +50,7 @@ class App extends PureComponent {
             <FullSizePlayerWrapped />
           </Route>
           <Route exact path="/sign-in-page">
-            <SignInPageWrapped onSubmit={() => Promise.reject(`Test error`)}/>
+            <SignInPageWrapped onSubmit={login}/>
           </Route>
         </Switch>
       </BrowserRouter>
@@ -59,6 +60,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   screen: PropTypes.oneOf([Screen.MAIN, Screen.FILM_PAGE]),
+  login: PropTypes.func.isRequired,
   playedFilm: PropTypes.object,
 };
 
@@ -67,5 +69,11 @@ const mapStateToProps = (state) => ({
   playedFilm: getPlayedFilm(state),
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    return dispatch(UserOperation.login(authData));
+  }
+});
+
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

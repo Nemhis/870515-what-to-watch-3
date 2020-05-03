@@ -8,16 +8,31 @@ describe(`Reducer tests`, () => {
     expect(reducer(void 0, {}))
       .toEqual({
         authorizationStatus: AuthorizationStatus.NO_AUTH,
+        user: null,
       });
   });
 
-  it(`Load films correctly work`, () => {
-    expect(reducer(void 0, {
+  it(`Require auth correctly work`, () => {
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }, {
       type: ActionType.REQUIRE_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
     }))
       .toEqual({
         authorizationStatus: AuthorizationStatus.AUTH,
+      });
+  });
+
+  it(`Load user info correctly work`, () => {
+    expect(reducer({
+      user: null,
+    }, {
+      type: ActionType.LOAD_USER_INFO,
+      payload: {id: 1, email: `test@mail.ru`}
+    }))
+      .toEqual({
+        user: {id: 1, email: `test@mail.ru`},
       });
   });
 });

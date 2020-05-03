@@ -3,7 +3,8 @@ import {ActionType} from './actions';
 import {extend} from '../../utils';
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  user: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const reducer = (state = initialState, action) => {
     case ActionType.REQUIRE_AUTHORIZATION:
       newState = {
         authorizationStatus: action.payload
+      };
+      break;
+
+    case ActionType.LOAD_USER_INFO:
+      newState = {
+        user: action.payload
       };
       break;
   }

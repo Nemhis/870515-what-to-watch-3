@@ -1,7 +1,9 @@
 import {AuthorizationStatus} from '../../const';
+import User from '../../adapter/user';
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOAD_USER_INFO: `LOAD_USER_INFO`,
 };
 
 const Operation = {
@@ -17,10 +19,11 @@ const Operation = {
 
   login: (authData) => (dispatch, getState, api) => {
     return api.post(`/login`, {
-      email: authData.login,
+      email: authData.email,
       password: authData.password,
-    }).then(() => {
+    }).then(({data}) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.loadUserInfo(data));
     });
   },
 };
@@ -30,6 +33,13 @@ const ActionCreator = {
     return {
       type: ActionType.REQUIRE_AUTHORIZATION,
       payload: status,
+    };
+  },
+
+  loadUserInfo(userInfo) {
+    return {
+      type: ActionType.LOAD_USER_INFO,
+      payload: User.fromRaw(userInfo),
     };
   }
 };
