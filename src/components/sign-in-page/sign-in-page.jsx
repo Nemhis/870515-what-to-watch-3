@@ -14,7 +14,7 @@ const ValidationSchema = object().shape({
     .required(ValidationMessages.REQUIRED),
 });
 
-const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
+const SignInPage = ({setErrorMessage, unsetErrorMessage, errorMessage, onSubmit}) => {
   return (
     <div className="user-page">
       <Header additionalClass={`user-page__head`}>
@@ -60,6 +60,7 @@ const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
                     placeholder="Email address"
                     name="email"
                     id="user-email"
+                    onFocus={() => unsetErrorMessage()}
                   />
                   <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
                 </div>
@@ -75,7 +76,7 @@ const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
                     placeholder="Password"
                     name="password"
                     id="user-password"
-                    autoComplete="off"
+                    onFocus={() => unsetErrorMessage()}
                   />
                   <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
                 </div>
@@ -106,8 +107,12 @@ const SignInPage = ({setErrorMessage, errorMessage, onSubmit}) => {
 };
 
 SignInPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.shape({
+    then: PropTypes.func.isRequired,
+    catch: PropTypes.func.isRequired,
+  }).isRequired,
   setErrorMessage: PropTypes.func.isRequired,
+  unsetErrorMessage: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
 };
 

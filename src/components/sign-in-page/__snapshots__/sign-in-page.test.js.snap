@@ -43,6 +43,9 @@ exports[`Render correctly <SignInPage> <SignInPage> correctly render 1`] = `
     <form
       action="#"
       className="sign-in__form"
+      noValidate={true}
+      onReset={[Function]}
+      onSubmit={[Function]}
     >
       <div
         className="sign-in__fields"
@@ -53,9 +56,12 @@ exports[`Render correctly <SignInPage> <SignInPage> correctly render 1`] = `
           <input
             className="sign-in__input"
             id="user-email"
-            name="user-email"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
             placeholder="Email address"
             type="email"
+            value=""
           />
           <label
             className="sign-in__label visually-hidden"
@@ -68,11 +74,15 @@ exports[`Render correctly <SignInPage> <SignInPage> correctly render 1`] = `
           className="sign-in__field"
         >
           <input
+            autoComplete="off"
             className="sign-in__input"
             id="user-password"
-            name="user-password"
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
             placeholder="Password"
             type="password"
+            value=""
           />
           <label
             className="sign-in__label visually-hidden"
@@ -87,6 +97,7 @@ exports[`Render correctly <SignInPage> <SignInPage> correctly render 1`] = `
       >
         <button
           className="sign-in__btn"
+          disabled={false}
           type="submit"
         >
           Sign in
