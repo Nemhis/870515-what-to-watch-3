@@ -128,4 +128,18 @@ describe(`Reducer tests`, () => {
         promoFilm: {id: 1},
       });
   });
+
+  it(`Load comments correctly work`, () => {
+    expect(reducer({
+      comments: {}
+    }, {
+      type: ActionType.LOAD_COMMENTS,
+      payload: {filmId: 2, comments: {id: 1, comment: `test`}},
+    }))
+      .toEqual({
+        comments: {
+          2: {id: 1, comment: `test`},
+        },
+      });
+  });
 });

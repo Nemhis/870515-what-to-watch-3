@@ -3,6 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {ActionType, ActionCreator, Operation} from './actions';
 import {createAPI} from '../../api';
 import Film from '../../adapter/film';
+import Comment from '../../adapter/comment';
 
 const api = createAPI(() => {});
 const filmsRaw = [{
@@ -43,6 +44,32 @@ const films = [
     'genre': `Comedy`,
     'released': 2014,
     'is_favorite': false
+  })
+];
+
+const commentsRaw = [
+  {
+    'id': 1,
+    'rating': 8.1,
+    'comment': `test comment`,
+    'date': `2018-04-04T16:00:00.000Z`,
+    'user': {
+      'id': 2,
+      'name': `User name`,
+    }
+  }
+];
+
+const comments = [
+  new Comment({
+    'id': 1,
+    'rating': 8.1,
+    'comment': `test comment`,
+    'date': `2018-04-04T16:00:00.000Z`,
+    'user': {
+      'id': 2,
+      'name': `User name`,
+    },
   })
 ];
 
@@ -97,6 +124,39 @@ describe(`Action creators work correctly`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_PROMO_FILM,
           payload: films[0]
+        });
+      });
+  });
+
+  it(`Load comments action return correct value`, () => {
+    expect(ActionCreator.loadComments(2, commentsRaw))
+      .toEqual({
+        type: ActionType.LOAD_COMMENTS,
+        payload: {
+          filmId: 2,
+          comments
+        },
+      });
+  });
+
+  it(`Should make a correct API call to /comments/:id`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const filmsLoader = Operation.loadComments(2);
+
+    apiMock
+      .onGet(`/comments/2`)
+      .reply(200, commentsRaw);
+
+    return filmsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_COMMENTS,
+          payload: {
+            filmId: 2,
+            comments,
+          }
         });
       });
   });
