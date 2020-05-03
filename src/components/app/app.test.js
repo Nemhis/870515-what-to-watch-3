@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import {App} from './app.jsx';
-import {Screen} from '../../const';
+import {AuthorizationStatus, Screen} from '../../const';
 import {DEFAULT_GENRE_ITEM, SHOWN_FILMS_COUNT} from '../../reducer/operation/actions';
 import NameSpace from '../../reducer/name-space';
 
@@ -48,7 +48,11 @@ it(`Render correctly <App>`, () => {
       screen: Screen.MAIN,
       selectedGenre: DEFAULT_GENRE_ITEM,
       shownFilmsCount: SHOWN_FILMS_COUNT,
-    }
+    },
+    [NameSpace.USER]: {
+      user: null,
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    },
   });
 
   const tree = renderer

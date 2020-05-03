@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import {getUser} from '../../reducer/user/selector';
 
 const UserInfo = ({user}) => (
   <div className="user-block">
@@ -19,4 +22,9 @@ UserInfo.propTypes = {
   })
 };
 
-export default UserInfo;
+const mapStateToProps = (state) => ({
+  user: getUser(state),
+});
+
+export {UserInfo};
+export default connect(mapStateToProps)(UserInfo);

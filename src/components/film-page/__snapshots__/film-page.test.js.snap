@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render correctly <FilmDetailInfo> 1`] = `
-Array [
+<React.Fragment>
   <section
     className="movie-card movie-card--full"
   >
@@ -21,44 +21,11 @@ Array [
       >
         WTW
       </h1>
-      <header
-        className="page-header movie-card__head"
+      <Header
+        additionalClass="movie-card__head"
       >
-        <div
-          className="logo"
-        >
-          <a
-            className="logo__link"
-            href="/"
-          >
-            <span
-              className="logo__letter logo__letter--1"
-            >
-              W
-            </span>
-            <span
-              className="logo__letter logo__letter--2"
-            >
-              T
-            </span>
-            <span
-              className="logo__letter logo__letter--3"
-            >
-              W
-            </span>
-          </a>
-        </div>
-        <div
-          className="user-block"
-        >
-          <a
-            className="user-block__link"
-            href="/sign-in-page"
-          >
-            Sign in
-          </a>
-        </div>
-      </header>
+        <Memo(Connect(UserInfo)) />
+      </Header>
       <div
         className="movie-card__wrap"
       >
@@ -153,100 +120,89 @@ Array [
         <div
           className="movie-card__desc"
         >
-          <nav
-            className="movie-nav movie-card__nav"
-          >
-            <ul
-              className="movie-nav__list"
+          <WithVideoPreview>
+            <Tab
+              name="Overview"
             >
-              <li
-                className="movie-nav__item movie-nav__item--active"
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Overview
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Details
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Reviews
-                </a>
-              </li>
-            </ul>
-          </nav>
-           
-          <div
-            className="movie-rating"
-          >
-            <div
-              className="movie-rating__score"
+               
+              <FilmOverview
+                film={
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "backgroundImg": "img/bg-the-grand-budapest-hotel.jpg",
+                    "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+                    "director": "Wes Andreson",
+                    "genre": "Comedy",
+                    "id": 1,
+                    "isFavorite": false,
+                    "name": "The Grand Budapest Hotel",
+                    "posterImg": "img/the-grand-budapest-hotel-poster.jpg",
+                    "previewImg": "img/the-grand-budapest-hotel.jpg",
+                    "previewVideoLink": "https://some-link",
+                    "rating": 8.9,
+                    "released": 2014,
+                    "runTime": 99,
+                    "scoresCount": 240,
+                    "starring": Array [
+                      "Bill Murray",
+                      "Edward Norton",
+                      "Jude Law",
+                      "Willem Dafoe",
+                      "Saoirse Ronan",
+                    ],
+                    "videoLink": "https://some-link",
+                  }
+                }
+              />
+               
+            </Tab>
+            <Tab
+              name="Details"
             >
-              8.9
-            </div>
-            <p
-              className="movie-rating__meta"
+               
+              <FilmDetails
+                film={
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "backgroundImg": "img/bg-the-grand-budapest-hotel.jpg",
+                    "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+                    "director": "Wes Andreson",
+                    "genre": "Comedy",
+                    "id": 1,
+                    "isFavorite": false,
+                    "name": "The Grand Budapest Hotel",
+                    "posterImg": "img/the-grand-budapest-hotel-poster.jpg",
+                    "previewImg": "img/the-grand-budapest-hotel.jpg",
+                    "previewVideoLink": "https://some-link",
+                    "rating": 8.9,
+                    "released": 2014,
+                    "runTime": 99,
+                    "scoresCount": 240,
+                    "starring": Array [
+                      "Bill Murray",
+                      "Edward Norton",
+                      "Jude Law",
+                      "Willem Dafoe",
+                      "Saoirse Ronan",
+                    ],
+                    "videoLink": "https://some-link",
+                  }
+                }
+              />
+               
+            </Tab>
+            <Tab
+              name="Reviews"
             >
-              <span
-                className="movie-rating__level"
-              >
-                Very good
-              </span>
-              <span
-                className="movie-rating__count"
-              >
-                240
-                 ratings
-              </span>
-            </p>
-          </div>
-          <div
-            className="movie-card__text"
-          >
-            <p>
-              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-            </p>
-            <p
-              className="movie-card__director"
-            >
-              <strong>
-                Director: 
-                Wes Andreson
-              </strong>
-            </p>
-            <p
-              className="movie-card__starring"
-            >
-              <strong>
-                Starring: 
-                Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan
-              </strong>
-            </p>
-          </div>
-           
+               
+              <FilmReviews />
+               
+            </Tab>
+          </WithVideoPreview>
         </div>
       </div>
     </div>
-  </section>,
+  </section>
   <div
     className="page-content"
   >
@@ -286,6 +242,6 @@ Array [
         </p>
       </div>
     </footer>
-  </div>,
-]
+  </div>
+</React.Fragment>
 `;

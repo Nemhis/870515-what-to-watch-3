@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import {FilmPage} from './film-page.jsx';
 
@@ -35,14 +35,14 @@ const films = [
 ];
 
 it(`Render correctly <FilmDetailInfo>`, () => {
-  const tree = renderer
-    .create(<FilmPage films={films}
+  const shallowRenderer = new ShallowRenderer();
+  const tree = shallowRenderer
+    .render(<FilmPage films={films}
       film={film}
       activeItemIndex={0}
       onItemSelect={() => {}}
       onPlayButtonClick={() => {}}
-    />)
-    .toJSON(`test`);
+    />);
 
   expect(tree).toMatchSnapshot();
 });

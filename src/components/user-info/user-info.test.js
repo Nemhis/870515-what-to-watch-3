@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import UserInfo from './user-info.jsx';
+import {UserInfo} from './user-info.jsx';
 
 const user = {
   avatarUrl: `test/url.png`
