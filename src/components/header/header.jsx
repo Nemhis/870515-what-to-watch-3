@@ -17,7 +17,7 @@ const Header = ({user}) => (
           <img src={user.avatarUrl} alt="User avatar" width="63" height="63"/>
         </div>
         :
-        <a href="sign-in.html" className="user-block__link">Sign in</a>
+        <a href="/sign-in-page" className="user-block__link">Sign in</a>
       }
     </div>
   </header>

@@ -6,6 +6,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import FilmPage from '../film-page/film-page.jsx';
 import FullSizePlayer from '../full-size-player/full-size-player.jsx';
+import SignInPage from '../sign-in-page/sign-in-page.jsx';
 
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
@@ -44,6 +45,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/full-size-player">
             <FullSizePlayerWrapped />
+          </Route>
+          <Route exact path="/sign-in-page">
+            <SignInPage />
           </Route>
         </Switch>
       </BrowserRouter>

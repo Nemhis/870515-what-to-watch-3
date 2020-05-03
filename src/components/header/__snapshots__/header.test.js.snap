@@ -9,6 +9,7 @@ exports[`Render correctly <Header> <Header> correctly render with no user 1`] = 
   >
     <a
       className="logo__link"
+      href="/"
     >
       <span
         className="logo__letter logo__letter--1"
@@ -32,7 +33,7 @@ exports[`Render correctly <Header> <Header> correctly render with no user 1`] = 
   >
     <a
       className="user-block__link"
-      href="sign-in.html"
+      href="/sign-in-page"
     >
       Sign in
     </a>
@@ -49,6 +50,7 @@ exports[`Render correctly <Header> <Header> correctly render with user 1`] = `
   >
     <a
       className="logo__link"
+      href="/"
     >
       <span
         className="logo__letter logo__letter--1"

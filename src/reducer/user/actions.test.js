@@ -62,7 +62,7 @@ describe(`Action creators work correctly`, () => {
     const checkAuthLoader = Operation.login({});
 
     apiMock
-      .onGet(`/login`)
+      .onPost(`/login`)
       .reply(200, true);
 
     return checkAuthLoader(dispatch, () => {}, api)
