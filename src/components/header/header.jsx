@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = ({user}) => (
+const Header = ({children}) => (
   <header className="page-header movie-card__head">
     <div className="logo">
       <a className="logo__link" href="/">
@@ -11,22 +11,12 @@ const Header = ({user}) => (
       </a>
     </div>
 
-    <div className="user-block">
-      {user ?
-        <div className="user-block__avatar">
-          <img src={user.avatarUrl} alt="User avatar" width="63" height="63"/>
-        </div>
-        :
-        <a href="/sign-in-page" className="user-block__link">Sign in</a>
-      }
-    </div>
+    {children || ``}
   </header>
 );
 
 Header.propTypes = {
-  user: PropTypes.shape({
-    avatarUrl: PropTypes.string,
-  })
+  children: PropTypes.node
 };
 
 export default Header;

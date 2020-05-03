@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render correctly <Header> <Header> correctly render with no user 1`] = `
+exports[`Render correctly <Header> <Header> correctly render with children 1`] = `
 <header
   className="page-header movie-card__head"
 >
@@ -28,60 +28,8 @@ exports[`Render correctly <Header> <Header> correctly render with no user 1`] = 
       </span>
     </a>
   </div>
-  <div
-    className="user-block"
-  >
-    <a
-      className="user-block__link"
-      href="/sign-in-page"
-    >
-      Sign in
-    </a>
-  </div>
-</header>
-`;
-
-exports[`Render correctly <Header> <Header> correctly render with user 1`] = `
-<header
-  className="page-header movie-card__head"
->
-  <div
-    className="logo"
-  >
-    <a
-      className="logo__link"
-      href="/"
-    >
-      <span
-        className="logo__letter logo__letter--1"
-      >
-        W
-      </span>
-      <span
-        className="logo__letter logo__letter--2"
-      >
-        T
-      </span>
-      <span
-        className="logo__letter logo__letter--3"
-      >
-        W
-      </span>
-    </a>
-  </div>
-  <div
-    className="user-block"
-  >
-    <div
-      className="user-block__avatar"
-    >
-      <img
-        alt="User avatar"
-        height="63"
-        src="test/url.png"
-        width="63"
-      />
-    </div>
+  <div>
+    This is children
   </div>
 </header>
 `;
