@@ -1,7 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import dayjs from 'dayjs';
+
 import {getCommentsForSelectedFilm} from '../../reducer/operation/selectors';
+import {isOdd} from '../../utils';
 
 
 class FilmReviews extends PureComponent {
@@ -9,27 +12,59 @@ class FilmReviews extends PureComponent {
     this.props.onMount();
   }
 
+  _renderReview({id, comment, rating, date, user}) {
+    const dayjsDate = dayjs(date);
+
+    return (
+      <div className="review" key={id}>
+        <blockquote className="review__quote">
+          <p className="review__text">{comment}</p>
+
+          <footer className="review__details">
+            <cite className="review__author">{user.name}</cite>
+            <time className="review__date" dateTime={dayjsDate.format(`YYYY-MM-DD`)}>
+              {dayjsDate.format(`MMMM D, YYYY`)}
+            </time>
+          </footer>
+        </blockquote>
+
+        <div className="review__rating">{rating}</div>
+      </div>
+    );
+  }
+
+  _divideComments(comments) {
+    const even = [];
+    const odd = [];
+
+    comments.forEach((review, index) => {
+      if (isOdd(index)) {
+        odd.push(review);
+      } else {
+        even.push(review);
+      }
+    });
+
+    return [even, odd];
+  }
+
   render() {
     const {comments} = this.props;
+    const [leftColumn, rightColumn] = this._divideComments(comments);
 
     return (
       <div className="movie-card__reviews movie-card__row">
-        <div className="movie-card__reviews-col">
-          <div className="review">
-            <blockquote className="review__quote">
-              <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious
-                Mittel-European kitsch of one of the director`s funniest and most exquisitely designed movies in
-                years.</p>
-
-              <footer className="review__details">
-                <cite className="review__author">Kate Muir</cite>
-                <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
-              </footer>
-            </blockquote>
-
-            <div className="review__rating">8,9</div>
+        {leftColumn.length &&
+          <div className="movie-card__reviews-col">
+            {leftColumn.map(this._renderReview)}
           </div>
-        </div>
+        }
+
+        {rightColumn.length &&
+          <div className="movie-card__reviews-col">
+            {rightColumn.map(this._renderReview)}
+          </div>
+        }
       </div>
     );
   }

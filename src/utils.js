@@ -49,3 +49,5 @@ export const extend = (a, b) => Object.assign({}, a, b);
 export const arrayUnique = (array) => {
   return array.filter((value, index, arr) => arr.indexOf(value) === index);
 };
+
+export const isOdd = (num) => num % 2;
